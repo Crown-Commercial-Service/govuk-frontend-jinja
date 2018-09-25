@@ -11,4 +11,4 @@ class Environment(jinja2.Environment):
 
     def join_path(self, template, parent):
         """Enable the use of relative paths in template import statements"""
-        return path.join(path.dirname(parent), template)
+        return path.normpath(path.join(path.dirname(parent), template))
