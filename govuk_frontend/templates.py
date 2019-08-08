@@ -8,6 +8,12 @@ class NunjucksLoaderMixin:
     def get_source(self, environment, template):
         contents, filename, uptodate = super().get_source(environment, template)
 
+        # Some component templates (such as radios) use `items` as the key of
+        # an object element. However `items` is also the name of a dictionary
+        # method in Python, and Jinja2 will prefer to return this attribute
+        # over the dict item.
+        contents = contents.replace(".items", "['items']")
+
         return contents, filename, uptodate
 
 
