@@ -14,6 +14,12 @@ class NunjucksLoaderMixin:
         # over the dict item.
         contents = contents.replace(".items", "['items']")
 
+        # Some component templates (such as radios) append the loop index to a
+        # string. As the loop index is an integer this causes a TypeError in
+        # Python. Jinja2 has an operator `~` for string concatenation that
+        # converts integers to strings.
+        contents = contents.replace("+ loop.index", "~ loop.index")
+
         return contents, filename, uptodate
 
 

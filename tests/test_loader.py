@@ -46,3 +46,26 @@ b"""
 {% endfor %}
 """
     )
+
+
+def test_replaces_add_loop_index_with_concatenate(environment, loader):
+    mock_open = mock.mock_open(
+        read_data=
+b"""
+{% for item in items %}
+  "item " + loop.index
+{% endfor %}
+"""
+    )
+    with mock.patch("jinja2.utils.open", mock_open):
+        contents, _, _ = loader.get_source(environment, "template.njk")
+
+    assert (
+        contents
+        ==
+"""
+{% for item in items %}
+  "item " ~ loop.index
+{% endfor %}
+"""
+    )
