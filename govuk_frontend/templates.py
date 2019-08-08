@@ -47,6 +47,9 @@ class NunjucksLoaderMixin:
         # without an else statement to assemble a CSS class string.
         contents = re.sub(r"\b(.+) if \1(?! else)", r"\1 if \1 else ''", contents)
 
+        # Nunjucks uses elseif, Jinja uses elif
+        contents = contents.replace("elseif", "elif")
+
         return contents, filename, uptodate
 
 
