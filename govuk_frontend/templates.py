@@ -25,6 +25,9 @@ def njk_to_j2(template):
     # class string.
     template = re.sub(r"\b(.+) if \1(?! else)", r"\1 if \1 else ''", template)
 
+    # Nunjucks uses elseif, Jinja uses elif
+    template = template.replace("elseif", "elif")
+
     return template
 
 
