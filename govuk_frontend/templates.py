@@ -3,6 +3,7 @@ import jinja2
 import jinja2.ext
 
 import os.path as path
+import re
 
 
 def njk_to_j2(template):
@@ -18,6 +19,11 @@ def njk_to_j2(template):
     # Python. Jinja2 has an operator `~` for string concatenation that
     # converts integers to strings.
     template = template.replace("+ loop.index", "~ loop.index")
+
+    # Some component templates (such as radios and character-count) use an
+    # inline if-expression without an else statement to assemble a CSS
+    # class string.
+    template = re.sub(r"\b(.+) if \1(?! else)", r"\1 if \1 else ''", template)
 
     return template
 
