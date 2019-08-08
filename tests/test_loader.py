@@ -69,3 +69,29 @@ b"""
 {% endfor %}
 """
     )
+
+
+def test_adds_else_statement_to_inline_if_expressions(environment, loader):
+    mock_open = mock.mock_open(
+        read_data=b"{% ' ' + item if item %}"
+    )
+    with mock.patch("jinja2.utils.open", mock_open):
+        contents, _, _ = loader.get_source(environment, "template.njk")
+
+    assert (
+        contents
+        ==
+        "{% ' ' + item if item else '' %}"
+    )
+
+    mock_open = mock.mock_open(
+        read_data=b"{% ' ' + item if item else '' %}"
+    )
+    with mock.patch("jinja2.utils.open", mock_open):
+        contents, _, _ = loader.get_source(environment, "template.njk")
+
+    assert (
+        contents
+        ==
+        "{% ' ' + item if item else '' %}"
+    )

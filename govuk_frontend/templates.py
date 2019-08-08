@@ -2,6 +2,7 @@
 import jinja2
 
 import os.path as path
+import re
 
 
 # copied from https://github.com/pallets/jinja/commit/19133d40593ced72eb28e230588abcc70d8b9f82
@@ -41,6 +42,10 @@ class NunjucksLoaderMixin:
         # Python. Jinja2 has an operator `~` for string concatenation that
         # converts integers to strings.
         contents = contents.replace("+ loop.index", "~ loop.index")
+
+        # Some component templates (such as radios) use an inline if-expression
+        # without an else statement to assemble a CSS class string.
+        contents = re.sub(r"\b(.+) if \1(?! else)", r"\1 if \1 else ''", contents)
 
         return contents, filename, uptodate
 
