@@ -6,7 +6,11 @@ import os.path as path
 
 class Environment(jinja2.Environment):
     def __init__(self, **kwargs):
-        kwargs.setdefault("loader", jinja2.loaders.FileSystemLoader("node_modules/govuk-frontend"))
+        kwargs.setdefault("loader",
+            jinja2.loaders.FileSystemLoader([
+                "node_modules/govuk-frontend",
+                "node_modules/govuk-frontend/components",
+        ]))
         super().__init__(**kwargs)
 
     def join_path(self, template, parent):
