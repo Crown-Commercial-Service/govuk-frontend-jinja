@@ -4,6 +4,28 @@ import jinja2
 import os.path as path
 
 
+# copied from https://github.com/pallets/jinja/commit/19133d40593ced72eb28e230588abcc70d8b9f82
+class ChainableUndefined(jinja2.runtime.Undefined):
+    """An undefined that is chainable, where both
+    __getattr__ and __getitem__ return itself rather than
+    raising an :exc:`UndefinedError`:
+    >>> foo = ChainableUndefined(name='foo')
+    >>> str(foo.bar['baz'])
+    ''
+    >>> foo.bar['baz'] + 42
+    Traceback (most recent call last):
+      ...
+    jinja2.exceptions.UndefinedError: 'foo' is undefined
+    .. versionadded:: 2.11
+    """
+    __slots__ = ()
+
+    def __getattr__(self, _):
+        return self
+
+    __getitem__ = __getattr__
+
+
 class NunjucksLoaderMixin:
     def get_source(self, environment, template):
         contents, filename, uptodate = super().get_source(environment, template)
@@ -30,6 +52,7 @@ class NunjucksFileSystemLoader(NunjucksLoaderMixin, jinja2.loaders.FileSystemLoa
 class Environment(jinja2.Environment):
     def __init__(self, **kwargs):
         kwargs.setdefault("loader", NunjucksFileSystemLoader("node_modules/govuk-frontend"))
+        kwargs.setdefault("undefined", ChainableUndefined)
         super().__init__(**kwargs)
 
     def join_path(self, template, parent):
