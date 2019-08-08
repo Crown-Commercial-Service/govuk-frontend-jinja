@@ -5,7 +5,10 @@ import os.path as path
 
 
 class NunjucksLoaderMixin:
-    pass
+    def get_source(self, environment, template):
+        contents, filename, uptodate = super().get_source(environment, template)
+
+        return contents, filename, uptodate
 
 
 class NunjucksFileSystemLoader(NunjucksLoaderMixin, jinja2.loaders.FileSystemLoader):
