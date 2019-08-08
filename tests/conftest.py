@@ -3,6 +3,7 @@ pytest_plugins = ['helpers_namespace']
 
 import pytest
 
+from itertools import filterfalse
 import re
 from typing import Iterator, Union, TextIO
 
@@ -20,5 +21,5 @@ def readlines(buf: Union[str, TextIO]) -> Iterator[str]:
 @pytest.helpers.register
 def normalise_whitespace(buf: Union[str, TextIO]) -> str:
     """Delete lines that are empty/contain only whitespace"""
-    lines = filter(IS_LINE_JUNK, readlines(buf))
+    lines = filterfalse(IS_LINE_JUNK, readlines(buf))
     return ''.join(lines)
