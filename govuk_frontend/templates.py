@@ -56,7 +56,11 @@ class NunjucksFileSystemLoader(NunjucksLoaderMixin, jinja2.loaders.FileSystemLoa
 
 class Environment(jinja2.Environment):
     def __init__(self, **kwargs):
-        kwargs.setdefault("loader", NunjucksFileSystemLoader("node_modules/govuk-frontend"))
+        kwargs.setdefault("loader",
+            NunjucksFileSystemLoader([
+                "node_modules/govuk-frontend",
+                "node_modules/govuk-frontend/components",
+        ]))
         kwargs.setdefault("undefined", ChainableUndefined)
         super().__init__(**kwargs)
 
