@@ -95,3 +95,28 @@ def test_adds_else_statement_to_inline_if_expressions(environment, loader):
         ==
         "{% ' ' + item if item else '' %}"
     )
+
+
+def test_quotes_dictionary_keys(environment, loader):
+    mock_open = mock.mock_open(
+        read_data=
+b"""
+{{ macro({
+  param: 'foo',
+  value: 'bar'
+}) }}
+"""
+    )
+    with mock.patch("jinja2.utils.open", mock_open):
+        contents, _, _ = loader.get_source(environment, "template.njk")
+
+    assert (
+        contents
+        ==
+"""
+{{ macro({
+  'param': 'foo',
+  'value': 'bar'
+}) }}
+"""
+    )

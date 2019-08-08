@@ -47,6 +47,11 @@ class NunjucksLoaderMixin:
         # without an else statement to assemble a CSS class string.
         contents = re.sub(r"\b(.+) if \1(?! else)", r"\1 if \1 else ''", contents)
 
+        # Some component templates (such as input) call macros with params as
+        # an object which has unqoted keys. This causes Jinja to silently
+        # ignore the values.
+        contents = re.sub(r"""^([ ]*)([^ '"#\r\n:]+?)\s*:""", r"\1'\2':", contents, flags=re.M)
+
         return contents, filename, uptodate
 
 
