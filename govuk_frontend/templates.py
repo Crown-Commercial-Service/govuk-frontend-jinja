@@ -13,6 +13,12 @@ def njk_to_j2(template):
     # over the dict item.
     template = template.replace(".items", "['items']")
 
+    # Some component templates (such as radios) append the loop index to a
+    # string. As the loop index is an integer this causes a TypeError in
+    # Python. Jinja2 has an operator `~` for string concatenation that
+    # converts integers to strings.
+    template = template.replace("+ loop.index", "~ loop.index")
+
     return template
 
 

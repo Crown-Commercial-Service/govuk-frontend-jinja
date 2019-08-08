@@ -20,3 +20,21 @@ def test_replaces_items_getattr_with_getitem():
 {% endfor %}
 """
     )
+
+
+def test_replaces_add_loop_index_with_concatenate():
+    assert (
+        njk_to_j2(
+"""
+{% for item in items %}
+  "item " + loop.index
+{% endfor %}
+"""
+        )
+        ==
+"""
+{% for item in items %}
+  "item " ~ loop.index
+{% endfor %}
+"""
+    )
