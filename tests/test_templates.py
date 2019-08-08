@@ -52,3 +52,23 @@ def test_replaces_add_loop_index_with_concatenate():
 )
 def test_adds_else_statement_to_inline_if_expressions(input, expected_output):
     assert njk_to_j2(input) == expected_output
+
+
+def test_quotes_dictionary_keys():
+    assert (
+        njk_to_j2(
+"""
+{{ macro({
+  param: 'foo',
+  value: 'bar'
+}) }}
+"""
+        )
+        ==
+"""
+{{ macro({
+  'param': 'foo',
+  'value': 'bar'
+}) }}
+"""
+    )

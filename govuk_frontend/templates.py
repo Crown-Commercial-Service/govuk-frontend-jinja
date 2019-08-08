@@ -28,6 +28,11 @@ def njk_to_j2(template):
     # Nunjucks uses elseif, Jinja uses elif
     template = template.replace("elseif", "elif")
 
+    # Some component templates (such as input) call macros with params as
+    # an object which has unqoted keys. This causes Jinja to silently
+    # ignore the values.
+    template = re.sub(r"""^([ ]*)([^ '"#\r\n:]+?)\s*:""", r"\1'\2':", template, flags=re.M)
+
     return template
 
 
