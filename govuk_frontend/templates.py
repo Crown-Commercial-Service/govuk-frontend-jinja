@@ -50,6 +50,11 @@ class NunjucksLoaderMixin:
         # Nunjucks uses elseif, Jinja uses elif
         contents = contents.replace("elseif", "elif")
 
+        # Some component templates (such as input) call macros with params as
+        # an object which has unqoted keys. This causes Jinja to silently
+        # ignore the values.
+        contents = re.sub(r"""^([ ]*)([^ '"#\r\n:]+?)\s*:""", r"\1'\2':", contents, flags=re.M)
+
         return contents, filename, uptodate
 
 
@@ -59,7 +64,11 @@ class NunjucksFileSystemLoader(NunjucksLoaderMixin, jinja2.loaders.FileSystemLoa
 
 class Environment(jinja2.Environment):
     def __init__(self, **kwargs):
-        kwargs.setdefault("loader", NunjucksFileSystemLoader("node_modules/govuk-frontend"))
+        kwargs.setdefault("loader",
+            NunjucksFileSystemLoader([
+                "node_modules/govuk-frontend",
+                "node_modules/govuk-frontend/components",
+        ]))
         kwargs.setdefault("undefined", ChainableUndefined)
         super().__init__(**kwargs)
 
