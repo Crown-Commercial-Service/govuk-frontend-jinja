@@ -72,3 +72,11 @@ def test_quotes_dictionary_keys():
 }) }}
 """
     )
+
+
+def test_patches_govuk_fieldset_definition():
+    assert(
+        njk_to_j2("{% macro govukFieldset(params) %}{% endmacro %}")
+        ==
+        "{% macro govukFieldset(params, caller=none) %}{% endmacro %}"
+    )

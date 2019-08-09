@@ -33,6 +33,13 @@ def njk_to_j2(template):
     # ignore the values.
     template = re.sub(r"""^([ ]*)([^ '"#\r\n:]+?)\s*:""", r"\1'\2':", template, flags=re.M)
 
+    # govukFieldset can accept a call block argument, however the Jinja
+    # compiler does not detect this as the macro body is included from
+    # the template file. A workaround is to patch the declaration of the
+    # macro to include an explicit caller argument.
+    template = template.replace("macro govukFieldset(params)",
+                                "macro govukFieldset(params, caller=none)")
+
     return template
 
 
