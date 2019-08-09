@@ -8,6 +8,9 @@ import re
 from textwrap import dedent
 from typing import Iterator, Union, TextIO
 
+import govuk_frontend.templates
+
+
 @pytest.helpers.register
 def IS_LINE_JUNK(line):
     return bool(re.match(r'^\s*$', line))
@@ -24,3 +27,8 @@ def normalise_whitespace(buf: Union[str, TextIO]) -> str:
     """Delete lines that are empty/contain only whitespace"""
     lines = filterfalse(IS_LINE_JUNK, readlines(buf))
     return dedent(''.join(lines)).strip()
+
+
+@pytest.fixture
+def env():
+    return govuk_frontend.templates.Environment()
