@@ -1,4 +1,5 @@
 *.egg-info
+*.tar.gz
 .tox
 __pycache__
 node_modules
