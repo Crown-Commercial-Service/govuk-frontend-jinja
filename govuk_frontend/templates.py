@@ -4,6 +4,10 @@ import jinja2
 import os.path as path
 
 
+def njk_to_j2(template):
+    return template
+
+
 class Environment(jinja2.Environment):
     def __init__(self, **kwargs):
         kwargs.setdefault("loader",
