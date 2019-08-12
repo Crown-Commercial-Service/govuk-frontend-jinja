@@ -16,3 +16,26 @@ class TestNunjucksUndefined:
     @pytest.fixture
     def env(self):
         return jinja2.Environment(undefined=NunjucksUndefined)
+
+    def test_undefined_is_chainable(self, env):
+        template = env.from_string("{{ item.hint.text }}")
+        assert (
+            template.render(item={"hint": {"text": "foobar"}})
+            ==
+            "foobar"
+        )
+        assert (
+            template.render(item={"hint": {}})
+            ==
+            ""
+        )
+        assert (
+            template.render(item={})
+            ==
+            ""
+        )
+        assert (
+            template.render()
+            ==
+            ""
+        )
