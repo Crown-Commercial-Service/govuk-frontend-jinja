@@ -83,6 +83,14 @@ class NunjucksUndefined(jinja2.runtime.Undefined):
     def items(self):
         return self
 
+    # Allow escaping with Markup. This is required when
+    # autoescape is enabled. Debugging this issue was
+    # annoying; the error messages were not clear as to
+    # the cause of the issue (see upstream pull request
+    # for info https://github.com/pallets/jinja/pull/1047)
+    def __html__(self):
+        return str(self)
+
 
 class Environment(jinja2.Environment):
     def __init__(self, **kwargs):

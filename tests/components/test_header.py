@@ -227,7 +227,6 @@ def test_header_with_service_name_and_navigation(env):
     )
 
 
-@pytest.mark.xfail(reason="inline if-expression not targeted by regex")
 def test_header_with_service_name_and_navigation_and_autoescape(env):
     from govuk_frontend.templates import Environment
     env = Environment(autoescape=True)
