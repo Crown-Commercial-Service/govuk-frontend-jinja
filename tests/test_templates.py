@@ -80,3 +80,11 @@ def test_patches_govuk_fieldset_definition():
         ==
         "{% macro govukFieldset(params, caller=none) %}{% endmacro %}"
     )
+
+
+def test_patches_iteration_of_params_attributes():
+    assert (
+        njk_to_j2("{%- for attribute, value in params.attributes %}{% endfor -%}")
+        ==
+        "{%- for attribute, value in params.attributes.items() %}{% endfor -%}"
+    )

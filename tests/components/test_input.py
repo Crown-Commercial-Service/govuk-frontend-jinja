@@ -117,3 +117,38 @@ r"""
             """
         )
     )
+
+
+def test_input_with_attributes():
+    env = Environment()
+    template = env.from_string(
+"""
+{% from "input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  "label": {
+    "text": "Number"
+  },
+  "id": "input-example",
+  "name": "test-name",
+  "attributes": {
+    "pattern": "[0-9]*",
+  },
+}) }}
+"""
+    )
+    assert (
+        pytest.helpers.normalise_whitespace(template.render())
+        ==
+        pytest.helpers.normalise_whitespace(
+"""
+<div class="govuk-form-group">
+  <label class="govuk-label" for="input-example">
+    Number
+  </label>
+
+  <input class="govuk-input" id="input-example" name="test-name" type="text" pattern="[0-9]*">
+</div>
+"""
+        )
+    )

@@ -40,6 +40,13 @@ def njk_to_j2(template):
     template = template.replace("macro govukFieldset(params)",
                                 "macro govukFieldset(params, caller=none)")
 
+    # The attributes field of params for govukInput is supposed to be a dictionary,
+    # and in the template for the input component the keys and values are iterated.
+    # In Python the default iterator for a dict is .keys(), but we want .items().
+    # This only works because our undefined implements .items().
+    template = template.replace("for attribute, value in params.attributes",
+                                "for attribute, value in params.attributes.items()")
+
     return template
 
 
@@ -70,6 +77,11 @@ class NunjucksUndefined(jinja2.runtime.Undefined):
         return self
 
     __getitem__ = __getattr__
+
+    # Allow treating undefined as an (empty) dictionary.
+    # This works because Undefined is an iterable.
+    def items(self):
+        return self
 
 
 class Environment(jinja2.Environment):
