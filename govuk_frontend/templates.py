@@ -17,6 +17,10 @@ class NunjucksExtension(jinja2.ext.Extension):
             return source
 
 
+class NunjucksUndefined(jinja2.runtime.Undefined):
+    __slots__ = ()
+
+
 class Environment(jinja2.Environment):
     def __init__(self, **kwargs):
         kwargs.setdefault("extensions", [NunjucksExtension])
@@ -25,6 +29,7 @@ class Environment(jinja2.Environment):
                 "node_modules/govuk-frontend",
                 "node_modules/govuk-frontend/components",
         ]))
+        kwargs.setdefault("undefined", NunjucksUndefined)
         super().__init__(**kwargs)
 
     def join_path(self, template, parent):
