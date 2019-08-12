@@ -2,10 +2,10 @@
 import pytest
 
 
-@pytest.mark.xfail(reason="tests with html causing lexer errors")
+@pytest.mark.xfail(reason="slight difference in line splits")
 def test_phase_banner(env):
     template = env.from_string(
-"""
+r"""
 {% from "phase-banner/macro.njk" import govukPhaseBanner %}
 
 {{ govukPhaseBanner({
