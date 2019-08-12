@@ -47,6 +47,17 @@ def njk_to_j2(template):
     template = template.replace("for attribute, value in params.attributes",
                                 "for attribute, value in params.attributes.items()")
 
+    # Some templates try to set a variable in an outer block, which is not
+    # supported in Jinja. We create a namespace in those templates to get
+    # around this.
+    template = re.sub(r"""^([ ]*)({% set describedBy = "" %})""",
+                      r"\1{%- set nonlocal = namespace() -%}\n\1\2",
+                      template,
+                      flags=re.M)
+    # Change any references to describedBy to be nonlocal.describedBy,
+    # unless describedBy is a dictionary key (i.e. quoted or dotted).
+    template = re.sub(r"""(?<!['".])describedBy""", r"nonlocal.describedBy", template)
+
     return template
 
 

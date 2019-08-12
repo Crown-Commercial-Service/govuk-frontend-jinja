@@ -2,7 +2,6 @@
 import pytest
 
 
-@pytest.mark.xfail(reason="issue #4: template tries to set variable in outer scope")
 def test_date_input(env):
     template = env.from_string(
 """
@@ -92,7 +91,6 @@ def test_date_input(env):
     )
 
 
-@pytest.mark.xfail(reason="issue #4: template tries to set variable in outer scope")
 def test_date_input_with_errors(env):
     template = env.from_string(
 """
@@ -189,7 +187,6 @@ def test_date_input_with_errors(env):
     )
 
 
-@pytest.mark.xfail(reason="issue #4: template tries to set variable in outer scope")
 def test_date_input_with_error_on_day_input(env):
     template = env.from_string(
 """
@@ -287,7 +284,6 @@ def test_date_input_with_error_on_day_input(env):
     )
 
 
-@pytest.mark.xfail(reason="issue #4: template tries to set variable in outer scope")
 def test_date_input_with_error_on_month_input(env):
     template = env.from_string(
 """
@@ -385,7 +381,6 @@ def test_date_input_with_error_on_month_input(env):
     )
 
 
-@pytest.mark.xfail(reason="issue #4: template tries to set variable in outer scope")
 def test_date_input_with_error_on_year_input(env):
     template = env.from_string(
 """

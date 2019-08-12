@@ -4,7 +4,6 @@ import pytest
 from govuk_frontend.templates import Environment
 
 
-@pytest.mark.xfail(reason="issue#4: template tries to set variable in outer scope")
 def test_checkboxes():
     env = Environment()
     template = env.from_string(
@@ -306,7 +305,6 @@ def test_checkboxes_with_disabled_item(env):
     )
 
 
-@pytest.mark.xfail(reason="issue#4: template tries to set variable in outer scope")
 def test_checkboxes_with_legend_as_page_heading(env):
     template = env.from_string(
 """
@@ -392,7 +390,6 @@ def test_checkboxes_with_legend_as_page_heading(env):
     )
 
 
-@pytest.mark.xfail(reason="issue#4: template tries to set variable in outer scope")
 def test_checkboxes_with_a_medium_legend(env):
     template = env.from_string(
 """
@@ -544,7 +541,6 @@ def test_checkboxes_without_fieldset(env):
     )
 
 
-@pytest.mark.xfail(reason="issue#4: template tries to set variable in outer scope")
 def test_checkboxes_with_all_fieldset_attributes(env):
     template = env.from_string(
 """
@@ -639,7 +635,6 @@ def test_checkboxes_with_all_fieldset_attributes(env):
     )
 
 
-@pytest.mark.xfail(reason="issue#4: template tries to set variable in outer scope")
 def test_checkboxes_with_error_message(env):
     template = env.from_string(
 """

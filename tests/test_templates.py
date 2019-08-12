@@ -88,3 +88,43 @@ def test_patches_iteration_of_params_attributes():
         ==
         "{%- for attribute, value in params.attributes.items() %}{% endfor -%}"
     )
+
+
+def test_adds_nonlocal_namespace_if_template_includes_describedBy():
+    template = """
+    {% set describedBy = "" %}
+    """
+    assert "    {%- set nonlocal = namespace() -%}" in njk_to_j2(template)
+
+
+def test_patches_describedBy_to_set_nonlocal():
+    template = \
+"""
+{% set describedBy = "" %}
+{% set describedBy = describedBy + '-hint' %}
+{% if ((describedBy | length) > 0) %}{% endif %}
+{% macro x(params) %}
+  {{ params.describedBy }}
+{% endmacro %}
+x({
+    "describedBy": describedBy,
+    describedBy: describedBy,
+})
+"""
+    assert (
+        njk_to_j2(template)
+        ==
+"""
+{%- set nonlocal = namespace() -%}
+{% set nonlocal.describedBy = "" %}
+{% set nonlocal.describedBy = nonlocal.describedBy + '-hint' %}
+{% if ((nonlocal.describedBy | length) > 0) %}{% endif %}
+{% macro x(params) %}
+  {{ params.describedBy }}
+{% endmacro %}
+x({
+    "describedBy": nonlocal.describedBy,
+    'describedBy': nonlocal.describedBy,
+})
+"""
+    )

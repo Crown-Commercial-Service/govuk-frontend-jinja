@@ -4,7 +4,6 @@ import pytest
 from govuk_frontend.templates import Environment
 
 
-@pytest.mark.xfail(reason="issue#4: template tries to set variable in outer scope")
 def test_radios():
     env = Environment()
     template = env.from_string(
@@ -140,7 +139,6 @@ def test_radios_without_fieldset():
     )
 
 
-@pytest.mark.xfail(reason="issue#4: template tries to set variable in outer scope")
 def test_radios_with_disabled(env):
     template = env.from_string(
 """
@@ -214,7 +212,6 @@ def test_radios_with_disabled(env):
     )
 
 
-@pytest.mark.xfail(reason="issue#4: template tries to set variable in outer scope")
 def test_radios_with_legend_as_page_heading(env):
     template = env.from_string(
 r"""
@@ -290,7 +287,6 @@ r"""
     )
 
 
-@pytest.mark.xfail(reason="issue#4: template tries to set variable in outer scope")
 def test_radios_with_a_medium_legend(env):
     template = env.from_string(
 r"""
@@ -586,7 +582,6 @@ def test_radios_without_fieldset(env):
     )
 
 
-@pytest.mark.xfail(reason="issue#4: template tries to set variable in outer scope")
 def test_radios_with_all_fieldset_attributes(env):
     template = env.from_string(
 """
