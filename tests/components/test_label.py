@@ -1,4 +1,6 @@
 
+import pytest
+
 from textwrap import dedent
 
 from govuk_frontend.templates import Environment
@@ -44,4 +46,53 @@ def test_default_example_macro():
         <label class="govuk-label">
           National Insurance number
         </label>\n\n\n""")
+    )
+
+
+def test_label_for():
+    env = Environment()
+    template = env.from_string(
+"""
+{% from "label/macro.njk" import govukLabel %}
+
+{{ govukLabel({
+  "text": "National Insurance number",
+  "for": "label-example",
+}) }}
+"""
+    )
+    assert (
+        template.render()
+        ==
+"""\n\n\n\n\n\n\n
+<label class="govuk-label" for="label-example">
+  National Insurance number
+</label>\n\n
+"""
+    )
+
+
+def test_label_with_undefined_params():
+    env = Environment()
+    template = env.from_string(
+"""
+{% from "label/macro.njk" import govukLabel %}
+
+{{ govukLabel({
+  "html": html,
+  "text": "National Insurance number",
+  "classes": classes,
+  "isPageHeading": isPageHeading,
+  "for": "label-example",
+}) }}
+"""
+    )
+    assert (
+        template.render()
+        ==
+"""\n\n\n\n\n\n\n
+<label class="govuk-label" for="label-example">
+  National Insurance number
+</label>\n\n
+"""
     )
