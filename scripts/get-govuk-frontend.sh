@@ -18,4 +18,4 @@ echo "$SHA256 $tarball" | sha256sum --check --quiet
 
 # extract
 mkdir -p node_modules/govuk-frontend
-tar -xf $tarball --skip-old-files -C node_modules/govuk-frontend --strip-components=2 "govuk-frontend-${VERSION}/package/"
+tar -xf $tarball -C node_modules/govuk-frontend --strip-components=2 "govuk-frontend-${VERSION}/package/"
