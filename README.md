@@ -1,8 +1,8 @@
-GOV.UK Frontend Python Client
+GOV.UK Frontend Jinja Client
 =============================
 
 This Python package includes classes and modules to make it easier to use the
-[GOV.UK Frontend] in your Python web app.
+[GOV.UK Frontend] in your Jinja-powered Python web app.
 
 ## Using with Flask
 
@@ -25,7 +25,7 @@ version of tox).
 
 ## Adding Tests
 
-`govuk_frontend_python` should match the output of using [Nunjucks] with
+`govuk_frontend_jinja` should match the output of using [Nunjucks] with
 [GOV.UK Frontend] as much as possible.
 
 If you want to see what the output of Nunjucks would be or to create a fixture
