@@ -19,3 +19,5 @@ echo "$SHA256 $tarball" | sha256sum --check --quiet
 # extract
 mkdir -p node_modules/govuk-frontend
 tar -xf $tarball -C node_modules/govuk-frontend --strip-components=2 "govuk-frontend-${VERSION}/package/"
+
+echo "Installed govuk-frontend v${VERSION} to node_modules"
