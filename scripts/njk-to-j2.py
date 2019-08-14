@@ -19,7 +19,7 @@ def iter_njk_templates(path: Path, root: Optional[Path] = None) -> Iterable[Tupl
             yield from iter_njk_templates(child, root=root)
     elif path.is_file():
         if path.suffix == ".njk":
-            f = path.relative_to(root)
+            f = path.resolve().relative_to(root)
             yield f, path.read_text()
 
 
