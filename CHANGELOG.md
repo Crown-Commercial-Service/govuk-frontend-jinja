@@ -1,3 +1,7 @@
+## Bugfixes
+
+* Fix bug with `join_path`
+
 2019-08-13 version 0.1.0-alpha
 
 ## New features
