@@ -2,7 +2,7 @@
 import pytest
 
 import jinja2
-from govuk_frontend.templates import Environment, NunjucksUndefined
+from govuk_frontend_jinja.templates import Environment, NunjucksUndefined
 
 
 def test_environment_contains_govuk_frontend_templates_which_can_be_rendered(env):

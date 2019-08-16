@@ -3,12 +3,12 @@ import pytest
 from unittest import mock
 
 import jinja2
-from govuk_frontend.templates import NunjucksExtension
+from govuk_frontend_jinja.templates import NunjucksExtension
 
 
 @pytest.fixture(autouse=True)
 def njk_to_j2():
-    with mock.patch("govuk_frontend.templates.njk_to_j2") as m:
+    with mock.patch("govuk_frontend_jinja.templates.njk_to_j2") as m:
         yield m
 
 

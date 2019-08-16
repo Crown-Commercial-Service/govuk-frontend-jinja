@@ -1,7 +1,7 @@
 
 from flask.templating import Environment as FlaskEnvironment
-from govuk_frontend.templates import Environment as NunjucksEnvironment
-from govuk_frontend.templates import NunjucksExtension, NunjucksUndefined
+from govuk_frontend_jinja.templates import Environment as NunjucksEnvironment
+from govuk_frontend_jinja.templates import NunjucksExtension, NunjucksUndefined
 
 
 class Environment(FlaskEnvironment, NunjucksEnvironment):
@@ -9,7 +9,7 @@ class Environment(FlaskEnvironment, NunjucksEnvironment):
 
 
 def init_govuk_frontend(app):
-    """Use the govuk_frontend Jinja environment in a Flask app
+    """Use the govuk_frontend_jinja Jinja environment in a Flask app
 
     >>> from flask import Flask
     >>> app = Flask("cheeseshop_service")

@@ -1,7 +1,7 @@
 
 import pytest
 
-from govuk_frontend.templates import Environment
+from govuk_frontend_jinja.templates import Environment
 
 
 def test_radios(env):

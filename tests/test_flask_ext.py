@@ -3,8 +3,8 @@ import pytest
 
 from flask import Flask, render_template
 
-import govuk_frontend
-from govuk_frontend.flask_ext import Environment, init_govuk_frontend
+import govuk_frontend_jinja
+from govuk_frontend_jinja.flask_ext import Environment, init_govuk_frontend
 
 
 @pytest.fixture
@@ -24,10 +24,10 @@ def test_init_govuk_frontend(app):
     assert (
         env.undefined
         ==
-        govuk_frontend.templates.NunjucksUndefined
+        govuk_frontend_jinja.templates.NunjucksUndefined
     )
     assert (
-        "govuk_frontend.templates.NunjucksExtension"
+        "govuk_frontend_jinja.templates.NunjucksExtension"
         in
         env.extensions
     )

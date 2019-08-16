@@ -1,5 +1,5 @@
 
-from govuk_frontend.templates import Environment
+from govuk_frontend_jinja.templates import Environment
 
 
 def test_hint_template(env):
