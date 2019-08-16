@@ -106,11 +106,6 @@ class NunjucksUndefined(jinja2.runtime.Undefined):
 class Environment(jinja2.Environment):
     def __init__(self, **kwargs):
         kwargs.setdefault("extensions", [NunjucksExtension])
-        kwargs.setdefault("loader",
-            jinja2.FileSystemLoader([
-                "node_modules/govuk-frontend",
-                "node_modules/govuk-frontend/components",
-        ]))
         kwargs.setdefault("undefined", NunjucksUndefined)
         super().__init__(**kwargs)
 

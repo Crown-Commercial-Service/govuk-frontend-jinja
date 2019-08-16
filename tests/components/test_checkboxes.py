@@ -1,11 +1,8 @@
 
 import pytest
 
-from govuk_frontend.templates import Environment
 
-
-def test_checkboxes():
-    env = Environment()
+def test_checkboxes(env):
     template = env.from_string(
 """
 {% from "checkboxes/macro.njk" import govukCheckboxes %}

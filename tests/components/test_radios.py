@@ -4,8 +4,7 @@ import pytest
 from govuk_frontend.templates import Environment
 
 
-def test_radios():
-    env = Environment()
+def test_radios(env):
     template = env.from_string(
 """{% from "radios/macro.njk" import govukRadios %}
 
@@ -76,8 +75,7 @@ def test_radios():
     )
 
 
-def test_radios_without_fieldset():
-    env = Environment()
+def test_radios_without_fieldset(env):
     template = env.from_string(
 """
 {% from "radios/macro.njk" import govukRadios %}

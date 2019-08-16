@@ -8,7 +8,8 @@ import re
 from textwrap import dedent
 from typing import Iterator, Union, TextIO
 
-import govuk_frontend.templates
+import jinja2
+import govuk_frontend
 
 
 @pytest.helpers.register
@@ -30,5 +31,15 @@ def normalise_whitespace(buf: Union[str, TextIO]) -> str:
 
 
 @pytest.fixture
-def env():
-    return govuk_frontend.templates.Environment()
+def loader():
+    return jinja2.FileSystemLoader([
+        "node_modules/govuk-frontend",
+        "node_modules/govuk-frontend/components",
+    ])
+
+
+@pytest.fixture
+def env(loader):
+    return govuk_frontend.templates.Environment(
+        loader=loader,
+    )

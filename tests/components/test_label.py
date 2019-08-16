@@ -3,10 +3,7 @@ import pytest
 
 from textwrap import dedent
 
-from govuk_frontend.templates import Environment
-
-def test_default_example():
-    env = Environment()
+def test_default_example(env):
     template = env.get_template("components/label/template.njk")
     assert (
         template.render(params={
@@ -27,8 +24,7 @@ def test_default_example():
     )
 
 
-def test_default_example_macro():
-    env = Environment()
+def test_default_example_macro(env):
     template = env.from_string(dedent(
             """
             {% from "components/label/macro.njk" import govukLabel %}
@@ -49,8 +45,7 @@ def test_default_example_macro():
     )
 
 
-def test_label_for():
-    env = Environment()
+def test_label_for(env):
     template = env.from_string(
 """
 {% from "label/macro.njk" import govukLabel %}
@@ -72,8 +67,7 @@ def test_label_for():
     )
 
 
-def test_label_with_undefined_params():
-    env = Environment()
+def test_label_with_undefined_params(env):
     template = env.from_string(
 """
 {% from "label/macro.njk" import govukLabel %}

@@ -1,11 +1,8 @@
 
 import pytest
 
-from govuk_frontend.templates import Environment
 
-
-def test_input():
-    env = Environment()
+def test_input(env):
     template = env.from_string(
 """
 {% from "input/macro.njk" import govukInput %}
@@ -34,8 +31,7 @@ def test_input():
     )
 
 
-def test_input_with_hint_text():
-    env = Environment()
+def test_input_with_hint_text(env):
     template = env.from_string(
 r"""
 {% from "input/macro.njk" import govukInput %}
@@ -73,8 +69,7 @@ r"""
     )
 
 
-def test_input_with_error_mesage():
-    env = Environment()
+def test_input_with_error_mesage(env):
     template = env.from_string(
 r"""
 {% from "input/macro.njk" import govukInput %}
@@ -119,8 +114,7 @@ r"""
     )
 
 
-def test_input_with_attributes():
-    env = Environment()
+def test_input_with_attributes(env):
     template = env.from_string(
 """
 {% from "input/macro.njk" import govukInput %}

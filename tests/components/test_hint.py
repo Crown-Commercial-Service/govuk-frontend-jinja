@@ -2,8 +2,7 @@
 from govuk_frontend.templates import Environment
 
 
-def test_hint_template():
-    env = Environment()
+def test_hint_template(env):
     template = env.get_template("components/hint/template.njk")
     assert (
         template.render(params={
@@ -18,8 +17,7 @@ For example, ‘QQ 12 34 56 C‘.
     )
 
 
-def test_hint():
-    env = Environment()
+def test_hint(env):
     template = env.from_string(
 """{% from "components/hint/macro.njk" import govukHint %}
 

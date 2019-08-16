@@ -227,9 +227,9 @@ def test_header_with_service_name_and_navigation(env):
     )
 
 
-def test_header_with_service_name_and_navigation_and_autoescape(env):
+def test_header_with_service_name_and_navigation_and_autoescape(env, loader):
     from govuk_frontend.templates import Environment
-    env = Environment(autoescape=True)
+    env = Environment(autoescape=True, loader=loader)
     template = env.from_string(
 """
 {% from "header/macro.njk" import govukHeader %}
