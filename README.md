@@ -10,7 +10,8 @@ This repo uses [tox] for testing; if you are hacking on the code all you need
 to do to test things out is run `tox` at the command line.
 
 If for some reason you need a virtualenv with `govuk_frontend` installed you
-can run `tox -e develop` which will create `venv` for you.
+can run `tox --devenv venv` which will create `venv` for you (requires a recent
+version of tox).
 
 ## Adding Tests
 

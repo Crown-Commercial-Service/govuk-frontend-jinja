@@ -1,11 +1,8 @@
 
 import pytest
 
-from govuk_frontend.templates import Environment
 
-
-def test_details():
-    env = Environment()
+def test_details(env):
     template = env.from_string(
 """
 {% from "details/macro.njk" import govukDetails %}
@@ -36,8 +33,7 @@ def test_details():
     )
 
 
-def test_details_with_html():
-    env = Environment()
+def test_details_with_html(env):
     template = env.from_string(
 """
 {% from "details/macro.njk" import govukDetails %}

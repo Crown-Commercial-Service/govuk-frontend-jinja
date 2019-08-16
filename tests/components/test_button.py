@@ -1,10 +1,7 @@
 from textwrap import dedent
 
-from govuk_frontend.templates import Environment
 
-
-def test_default_example():
-    env = Environment()
+def test_default_example(env):
     template = env.get_template("components/button/template.njk")
 
     assert (
@@ -17,8 +14,7 @@ def test_default_example():
     )
 
 
-def test_default_example_macro():
-    env = Environment()
+def test_default_example_macro(env):
     template = env.from_string(dedent(
         """
         {% from "components/button/macro.njk" import govukButton %}
@@ -37,8 +33,7 @@ def test_default_example_macro():
     )
 
 
-def test_disabled_button_macro():
-    env = Environment()
+def test_disabled_button_macro(env):
     template = env.from_string(dedent(
         """
         {% from "button/macro.njk" import govukButton %}
@@ -58,8 +53,7 @@ def test_disabled_button_macro():
     )
 
 
-def test_link_button_macro():
-    env = Environment()
+def test_link_button_macro(env):
     template = env.from_string(dedent(
         """
         {% from "button/macro.njk" import govukButton %}
@@ -79,8 +73,7 @@ def test_link_button_macro():
     )
 
 
-def test_disabled_link_button_macro():
-    env = Environment()
+def test_disabled_link_button_macro(env):
     template = env.from_string(dedent(
         """
         {% from "button/macro.njk" import govukButton %}
@@ -101,8 +94,7 @@ def test_disabled_link_button_macro():
     )
 
 
-def test_start_button_macro():
-    env = Environment()
+def test_start_button_macro(env):
     template = env.from_string(dedent(
         """
         {% from "button/macro.njk" import govukButton %}
@@ -123,8 +115,7 @@ def test_start_button_macro():
     )
 
 
-def test_input_button_macro():
-    env = Environment()
+def test_input_button_macro(env):
     template = env.from_string(dedent(
         """
         {% from "button/macro.njk" import govukButton %}
@@ -140,8 +131,7 @@ def test_input_button_macro():
     )
 
 
-def test_disabled_input_button_macro():
-    env = Environment()
+def test_disabled_input_button_macro(env):
     template = env.from_string(dedent(
         """
         {% from "button/macro.njk" import govukButton %}

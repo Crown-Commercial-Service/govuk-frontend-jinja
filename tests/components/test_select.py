@@ -1,11 +1,8 @@
 
 import pytest
 
-from govuk_frontend.templates import Environment
 
-
-def test_select():
-    env = Environment()
+def test_select(env):
     template = env.from_string(
 """
 {% from "select/macro.njk" import govukSelect %}

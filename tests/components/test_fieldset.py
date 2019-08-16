@@ -1,11 +1,8 @@
 
 import pytest
 
-from govuk_frontend.templates import Environment
 
-
-def test_fieldset():
-    env = Environment()
+def test_fieldset(env):
     template = env.from_string(
 """{% from "components/fieldset/macro.njk" import govukFieldset %}
 
@@ -31,8 +28,7 @@ def test_fieldset():
     )
 
 
-def test_fieldset_with_block():
-    env = Environment()
+def test_fieldset_with_block(env):
     template = env.from_string(
 """
 {% from "components/fieldset/macro.njk" import govukFieldset %}

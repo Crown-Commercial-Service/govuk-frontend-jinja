@@ -14,7 +14,7 @@ def njk_to_j2():
 
 class TestExtension:
     @pytest.fixture
-    def ext(self):
+    def env(self):
         return jinja2.Environment()
 
     def test_preprocesses_nunjucks_templates(self, env, njk_to_j2):
