@@ -40,6 +40,6 @@ def loader():
 
 @pytest.fixture
 def env(loader):
-    return govuk_frontend.templates.Environment(
+    return govuk_frontend.Environment(
         loader=loader,
     )
