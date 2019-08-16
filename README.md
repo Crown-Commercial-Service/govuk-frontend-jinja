@@ -4,6 +4,10 @@ GOV.UK Frontend Jinja Client
 This Python package includes classes and modules to make it easier to use the
 [GOV.UK Frontend] in your Jinja-powered Python web app.
 
+> **NOTE**: This repository is maintained by GDS developers, but **not** the
+> GOV.UK Design System team. If you have questions or need support raise an
+> issue against this repo [here](#issues).
+
 ## Using with Flask
 
 Somewhere in your `app.py` (or wherever you do your app initialisation):
