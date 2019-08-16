@@ -1,3 +1,7 @@
+## New features
+
+* Add Flask extension
+
 ## Bugfixes
 
 * Fix bug with `join_path`
