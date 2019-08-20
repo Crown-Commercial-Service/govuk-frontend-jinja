@@ -13,7 +13,7 @@ This Python package includes classes and modules to make it easier to use the
 Somewhere in your `app.py` (or wherever you do your app initialisation):
 
 ```
-from govuk_frontend.flask_ext import init_govuk_frontend
+from govuk_frontend_jinja.flask_ext import init_govuk_frontend
 
 init_govuk_frontend(app)
 ```
