@@ -1,8 +1,12 @@
-GOV.UK Frontend Python Client
+GOV.UK Frontend Jinja Client
 =============================
 
 This Python package includes classes and modules to make it easier to use the
-[GOV.UK Frontend] in your Python web app.
+[GOV.UK Frontend] in your Jinja-powered Python web app.
+
+> **NOTE**: This repository is maintained by GDS developers, but **not** the
+> GOV.UK Design System team. If you have questions or need support raise an
+> issue against this repo [here](#issues).
 
 ## Using with Flask
 
@@ -19,13 +23,13 @@ init_govuk_frontend(app)
 This repo uses [tox] for testing; if you are hacking on the code all you need
 to do to test things out is run `tox` at the command line.
 
-If for some reason you need a virtualenv with `govuk_frontend` installed you
-can run `tox --devenv venv` which will create `venv` for you (requires a recent
-version of tox).
+If for some reason you need a virtualenv with `govuk_frontend_jinja` installed
+you can run `tox --devenv venv` which will create `venv` for you (requires a
+recent version of tox).
 
 ## Adding Tests
 
-`govuk_frontend_python` should match the output of using [Nunjucks] with
+`govuk_frontend_jinja` should match the output of using [Nunjucks] with
 [GOV.UK Frontend] as much as possible.
 
 If you want to see what the output of Nunjucks would be or to create a fixture

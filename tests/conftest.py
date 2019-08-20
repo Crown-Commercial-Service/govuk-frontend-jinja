@@ -9,7 +9,7 @@ from textwrap import dedent
 from typing import Iterator, Union, TextIO
 
 import jinja2
-import govuk_frontend
+import govuk_frontend_jinja
 
 
 @pytest.helpers.register
@@ -40,6 +40,6 @@ def loader():
 
 @pytest.fixture
 def env(loader):
-    return govuk_frontend.Environment(
+    return govuk_frontend_jinja.Environment(
         loader=loader,
     )

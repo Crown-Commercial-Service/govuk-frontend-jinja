@@ -4,7 +4,7 @@
 Run njk_to_j2 against the a tree of Nunjucks templates.
 """
 
-from govuk_frontend.templates import njk_to_j2
+from govuk_frontend_jinja.templates import njk_to_j2
 
 from argparse import ArgumentParser
 from pathlib import Path

@@ -1,7 +1,7 @@
 
 import pytest
 
-from govuk_frontend.templates import njk_to_j2
+from govuk_frontend_jinja.templates import njk_to_j2
 
 
 def test_replaces_items_getattr_with_getitem():
