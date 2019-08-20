@@ -4,6 +4,16 @@ GOV.UK Frontend Python Client
 This Python package includes classes and modules to make it easier to use the
 [GOV.UK Frontend] in your Python web app.
 
+## Using with Flask
+
+Somewhere in your `app.py` (or wherever you do your app initialisation):
+
+```
+from govuk_frontend.flask_ext import init_govuk_frontend
+
+init_govuk_frontend(app)
+```
+
 ## Developing
 
 This repo uses [tox] for testing; if you are hacking on the code all you need
