@@ -58,6 +58,11 @@ def njk_to_j2(template):
     # unless describedBy is a dictionary key (i.e. quoted or dotted).
     template = re.sub(r"""(?<!['".])describedBy""", r"nonlocal.describedBy", template)
 
+    # Issue#16: some component templates test the length of an array by trying
+    # to get an attribute `.length`. Instead we need to use the Jinja filter
+    # `length()`.
+    template = template.replace(".length", " | length")
+
     return template
 
 

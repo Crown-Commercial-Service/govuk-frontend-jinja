@@ -128,3 +128,11 @@ x({
 })
 """
     )
+
+
+def test_replaces_length_getattr_with_length_filter():
+    assert (
+        njk_to_j2("{{ params.length }}")
+        ==
+        "{{ params | length }}"
+    )
