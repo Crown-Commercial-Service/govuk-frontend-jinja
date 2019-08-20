@@ -42,3 +42,7 @@ def test_normalise_whitespace_can_be_imported_with_another_name():
         ==
         "What's going on?\nI don't know."
     )
+
+
+def test_govuk_frontend_version():
+    assert pytest.helpers.govuk_frontend_version_info() == (2, 4, 0)
