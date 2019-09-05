@@ -1,15 +1,14 @@
 
 import pytest
 
-from flask import Flask, render_template
+flask = pytest.importorskip("flask", reason="requires Flask")
 
 import govuk_frontend_jinja
 from govuk_frontend_jinja.flask_ext import Environment, init_govuk_frontend
 
-
 @pytest.fixture
 def app():
-    return Flask("test_flask_ext")
+    return flask.Flask("test_flask_ext")
 
 
 def test_environment_takes_app_as_first_argument(app):
@@ -38,4 +37,4 @@ def test_render_template(app, loader):
     app.jinja_loader = loader
 
     with app.app_context():
-        render_template("template.njk")
+        flask.render_template("template.njk")
