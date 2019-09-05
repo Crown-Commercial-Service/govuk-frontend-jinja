@@ -1,9 +1,11 @@
+## 2019-09-05 version 0.3.0-alpha
+
 ### New features
 
 * Add code to handle when Nunjucks template wants length of an array
 * Add tests for summary list component
 
-##  Bugfixes
+###  Bugfixes
 
 * Fix `flask_ext` to work with Flask 1.0.x
 
