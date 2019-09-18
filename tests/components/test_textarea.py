@@ -108,7 +108,6 @@ def test_textarea_with_custom_rows(env):
     )
 
 
-@pytest.mark.xfail(reason="autoescape required, HTML entities being escaped")
 def test_textarea_with_label_as_page_heading(env):
     template = env.from_string(
 """

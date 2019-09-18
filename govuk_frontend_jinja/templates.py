@@ -1,6 +1,7 @@
 
 import jinja2
 import jinja2.ext
+from markupsafe import Markup
 
 import os.path as path
 import re
@@ -63,7 +64,50 @@ def njk_to_j2(template):
     # `length()`.
     template = template.replace(".length", " | length")
 
+    # see `indent_njk`
+    template = re.sub(re.escape("| indent") + r"\b", "| indent_njk", template)
+
     return template
+
+
+def indent_njk(
+    s, width=4, first=False, blank=False, indentfirst=None
+):
+    """Return a copy of the string with each line indented by 4 spaces."""
+    
+    # Copied from
+    # https://github.com/pallets/jinja/blob/a2f5e2c7972c4d5148c1c75c724e24950d8605bc/jinja2/filters.py#L536-L580
+    # to include an unreleased fix for https://github.com/pallets/jinja/pull/826
+    # which causes the file upload component to escape HTML markup.
+    # TODO: Remove once jinja2 2.11 is released and in use.
+
+    if indentfirst is not None:
+        first = indentfirst
+
+    indention = u' ' * width
+    newline = u'\n'
+
+    if isinstance(s, Markup):
+        indention = Markup(indention)
+        newline = Markup(newline)
+
+    s += newline  # this quirk is necessary for splitlines method
+
+    if blank:
+        rv = (newline + indention).join(s.splitlines())
+    else:
+        lines = s.splitlines()
+        rv = lines.pop(0)
+
+        if lines:
+            rv += newline + newline.join(
+                indention + line if line else line for line in lines
+            )
+
+    if first:
+        rv = indention + rv
+
+    return rv
 
 
 class NunjucksExtension(jinja2.ext.Extension):
@@ -124,6 +168,7 @@ class Environment(jinja2.Environment):
         kwargs.setdefault("extensions", [NunjucksExtension])
         kwargs.setdefault("undefined", NunjucksUndefined)
         super().__init__(**kwargs)
+        self.filters["indent_njk"] = indent_njk
 
     def join_path(self, template, parent):
         """Enable the use of relative paths in template import statements"""
