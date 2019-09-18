@@ -26,7 +26,6 @@ def test_date_input_with_error_on_year_input(env, similar, template, expected):
     assert similar(template.render(), expected)
 
 
-@pytest.mark.xfail(reason="attempting to access params.items")
 def test_date_input_with_default_items(env, similar, template, expected):
     template = env.from_string(template)
     assert similar(template.render(), expected)
