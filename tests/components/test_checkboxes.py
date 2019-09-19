@@ -84,7 +84,6 @@ def test_checkboxes(env):
     )
 
 
-@pytest.mark.xfail(reason="Jinja undefined is stricter than Nunjucks undefined")
 def test_checkboxes_with_id_and_name(env):
     template = env.from_string(
 """
