@@ -163,7 +163,33 @@ class NunjucksUndefined(jinja2.runtime.Undefined):
         return super().__radd__(other)
 
 
+class NunjucksCodeGenerator(jinja2.compiler.CodeGenerator):
+    def visit_CondExpr(self, node, frame):
+        if not (self.filename or "").endswith(".njk"):
+            return super().visit_CondExpr(node, frame)
+
+        # else our replacement, which is based on that in
+        # https://github.com/pallets/jinja/blob/c4c4088945a2c12535f539be7f5453b9ca94666c/jinja2/compiler.py#L1613
+        def write_expr2():
+            if node.expr2 is not None:
+                return self.visit(node.expr2, frame)
+            # rather than complaining about a missing else
+            # clause we just assume it to be the empty
+            # string for nunjucks compatibility
+            return self.write('""')
+
+        self.write('(')
+        self.visit(node.expr1, frame)
+        self.write(' if ')
+        self.visit(node.test, frame)
+        self.write(' else ')
+        write_expr2()
+        self.write(')')
+
+
 class Environment(jinja2.Environment):
+    code_generator_class = NunjucksCodeGenerator
+
     def __init__(self, **kwargs):
         kwargs.setdefault("extensions", [NunjucksExtension])
         kwargs.setdefault("undefined", NunjucksUndefined)
