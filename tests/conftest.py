@@ -1,5 +1,4 @@
-
-pytest_plugins = ['helpers_namespace']
+pytest_plugins = ["helpers_namespace"]
 
 import pytest
 
@@ -15,7 +14,8 @@ import govuk_frontend_jinja
 
 @pytest.helpers.register
 def IS_LINE_JUNK(line):
-    return bool(re.match(r'^\s*$', line))
+    return bool(re.match(r"^\s*$", line))
+
 
 @pytest.helpers.register
 def readlines(buf: Union[str, TextIO]) -> Iterator[str]:
@@ -24,11 +24,12 @@ def readlines(buf: Union[str, TextIO]) -> Iterator[str]:
     else:
         return buf.readlines()
 
+
 @pytest.helpers.register
 def normalise_whitespace(buf: Union[str, TextIO]) -> str:
     """Delete lines that are empty/contain only whitespace"""
     lines = filterfalse(IS_LINE_JUNK, readlines(buf))
-    return dedent(''.join(lines)).strip()
+    return dedent("".join(lines)).strip()
 
 
 @pytest.helpers.register
@@ -44,14 +45,11 @@ def govuk_frontend_version_info() -> Tuple[int, int, int]:
 
 @pytest.fixture
 def loader():
-    return jinja2.FileSystemLoader([
-        "node_modules/govuk-frontend",
-        "node_modules/govuk-frontend/components",
-    ])
+    return jinja2.FileSystemLoader(
+        ["node_modules/govuk-frontend", "node_modules/govuk-frontend/components"]
+    )
 
 
 @pytest.fixture
 def env(loader):
-    return govuk_frontend_jinja.Environment(
-        loader=loader,
-    )
+    return govuk_frontend_jinja.Environment(loader=loader)
