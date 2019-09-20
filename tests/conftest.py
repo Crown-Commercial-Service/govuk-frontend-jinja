@@ -4,6 +4,7 @@ import pytest
 
 from itertools import filterfalse
 import json
+from pathlib import Path
 import re
 from textwrap import dedent
 from typing import Iterator, Union, TextIO, Tuple
@@ -50,6 +51,43 @@ def loader():
     )
 
 
+def fixture_file_factory(name, typ, path):
+    """
+    >>> fixture_file_factory("test_default", "t", "tests/components/back_link/test_back_link.py")
+    Path(tests/components/back_link/test_default.t.html)
+    """
+    fname = f"{name}.{typ}.html"
+    f = Path(path).parent / fname
+    return f
+
+
+@pytest.fixture
+def file_factory(request):
+    return lambda name, typ: fixture_file_factory(name, typ, request.fspath)
+
+
 @pytest.fixture
 def env(loader):
     return govuk_frontend_jinja.Environment(loader=loader)
+
+
+@pytest.fixture(scope="function")
+def template(request):
+    return fixture_file_factory(request.node.name, "t", request.fspath).read_text()
+
+
+@pytest.fixture(scope="function")
+def expected(request):
+    return fixture_file_factory(request.node.name, "x", request.fspath).read_text()
+
+
+@pytest.fixture
+def similar():
+    norm = pytest.helpers.normalise_whitespace
+
+    def assert_similar(a, b):
+        __tracebackhide__ = True
+        assert norm(a) == norm(b)
+        return True
+
+    return assert_similar
