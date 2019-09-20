@@ -5,7 +5,8 @@ def test_default_example(env):
     template = env.get_template("components/button/template.njk")
 
     assert (
-        template.render(params={"text": "Save and continue"}).strip() == dedent(
+        template.render(params={"text": "Save and continue"}).strip()
+        == dedent(
             """
             <button type="submit" class="govuk-button">
               Save and continue
@@ -15,17 +16,20 @@ def test_default_example(env):
 
 
 def test_default_example_macro(env):
-    template = env.from_string(dedent(
-        """
+    template = env.from_string(
+        dedent(
+            """
         {% from "components/button/macro.njk" import govukButton %}
 
         {{ govukButton({
           "text": "Save and continue"
         }) }}"""
-    ))
+        )
+    )
     assert (
-        template.render().strip() == dedent(
-        """
+        template.render().strip()
+        == dedent(
+            """
         <button type="submit" class="govuk-button">
           Save and continue
         </button>"""
@@ -34,18 +38,21 @@ def test_default_example_macro(env):
 
 
 def test_disabled_button_macro(env):
-    template = env.from_string(dedent(
-        """
+    template = env.from_string(
+        dedent(
+            """
         {% from "button/macro.njk" import govukButton %}
 
         {{ govukButton({
           "text": "Disabled button",
           "disabled": true
         }) }}"""
-    ))
+        )
+    )
     assert (
-        template.render().strip() == dedent(
-        """
+        template.render().strip()
+        == dedent(
+            """
         <button type="submit" disabled="disabled" aria-disabled="true" class="govuk-button govuk-button--disabled">
           Disabled button
         </button>"""
@@ -54,18 +61,21 @@ def test_disabled_button_macro(env):
 
 
 def test_link_button_macro(env):
-    template = env.from_string(dedent(
-        """
+    template = env.from_string(
+        dedent(
+            """
         {% from "button/macro.njk" import govukButton %}
 
         {{ govukButton({
           "text": "Link button",
           "href": "/",
         }) }}"""
-    ))
+        )
+    )
     assert (
-        template.render().strip() == dedent(
-        """
+        template.render().strip()
+        == dedent(
+            """
         <a href="/" role="button" draggable="false" class="govuk-button">
           Link button
         </a>"""
@@ -74,8 +84,9 @@ def test_link_button_macro(env):
 
 
 def test_disabled_link_button_macro(env):
-    template = env.from_string(dedent(
-        """
+    template = env.from_string(
+        dedent(
+            """
         {% from "button/macro.njk" import govukButton %}
 
         {{ govukButton({
@@ -83,10 +94,12 @@ def test_disabled_link_button_macro(env):
           "href": "/",
           "disabled": true
         }) }}"""
-    ))
+        )
+    )
     assert (
-        template.render().strip() == dedent(
-        """
+        template.render().strip()
+        == dedent(
+            """
         <a href="/" role="button" draggable="false" class="govuk-button govuk-button--disabled">
           Link button
         </a>"""
@@ -95,8 +108,9 @@ def test_disabled_link_button_macro(env):
 
 
 def test_start_button_macro(env):
-    template = env.from_string(dedent(
-        """
+    template = env.from_string(
+        dedent(
+            """
         {% from "button/macro.njk" import govukButton %}
 
         {{ govukButton({
@@ -104,10 +118,12 @@ def test_start_button_macro(env):
           "href": "/",
           "classes": "govuk-button--start"
         }) }}"""
-    ))
+        )
+    )
     assert (
-        template.render().strip() == dedent(
-        """
+        template.render().strip()
+        == dedent(
+            """
         <a href="/" role="button" draggable="false" class="govuk-button govuk-button--start">
           Start now link button
         </a>"""
@@ -116,8 +132,9 @@ def test_start_button_macro(env):
 
 
 def test_input_button_macro(env):
-    template = env.from_string(dedent(
-        """
+    template = env.from_string(
+        dedent(
+            """
         {% from "button/macro.njk" import govukButton %}
 
         {{ govukButton({
@@ -125,15 +142,18 @@ def test_input_button_macro(env):
           "name": "start-now",
           "text": "Start now"
         }) }}"""
-    ))
+        )
+    )
     assert (
-        template.render().strip() == """<input value="Start now" name="start-now" type="submit" class="govuk-button">"""
+        template.render().strip()
+        == """<input value="Start now" name="start-now" type="submit" class="govuk-button">"""
     )
 
 
 def test_disabled_input_button_macro(env):
-    template = env.from_string(dedent(
-        """
+    template = env.from_string(
+        dedent(
+            """
         {% from "button/macro.njk" import govukButton %}
 
         {{ govukButton({
@@ -141,10 +161,9 @@ def test_disabled_input_button_macro(env):
           "text": "Explicit input button disabled",
           "disabled": true
         }) }}"""
-    ))
-    assert (
-        template.render().strip() == (
-            """<input value="Explicit input button disabled" type="submit" disabled="disabled" """
-            """aria-disabled="true" class="govuk-button govuk-button--disabled">"""
         )
+    )
+    assert template.render().strip() == (
+        """<input value="Explicit input button disabled" type="submit" disabled="disabled" """
+        """aria-disabled="true" class="govuk-button govuk-button--disabled">"""
     )

@@ -1,0 +1,12 @@
+{% from "character-count/macro.njk" import govukCharacterCount %}
+
+{{ govukCharacterCount({
+  "id": "with-threshold",
+  "name": "with-threshold",
+  "maxlength": 10,
+  "threshold": 75,
+  "label": {
+    "text": "Full address"
+  }
+}) }}
+

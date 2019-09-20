@@ -1,0 +1,27 @@
+{% from "tabs/macro.njk" import govukTabs %}
+
+{{ govukTabs({
+  "items": [
+    {
+      "label": "Past day",
+      "id": "past-day",
+      "panel": {
+        "text": "Yesterday"
+      }
+    },
+    {
+      "label": "This day",
+      "id": "this-day",
+      "panel": {
+        "text": "Today"
+      }
+    },
+    {
+      "label": "Next day",
+      "id": "next-day",
+      "panel": {
+        "text": "Tomorrow"
+      }
+    },
+  ]
+}) }}

@@ -1,0 +1,19 @@
+{% from "radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  "name": "colours",
+  "items": [
+    {
+      "value": "red",
+      "text": "Red"
+    },
+    {
+      "value": "green",
+      "text": "Green"
+    },
+    {
+      "value": "blue",
+      "text": "Blue"
+    }
+  ]
+}) }}

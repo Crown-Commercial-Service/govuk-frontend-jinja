@@ -1,0 +1,10 @@
+{% from "textarea/macro.njk" import govukTextarea %}
+
+{{ govukTextarea({
+  "id": "full-address",
+  "name": "address",
+  "label": {
+    "text": "Full address"
+  },
+  "rows": 8
+}) }}
