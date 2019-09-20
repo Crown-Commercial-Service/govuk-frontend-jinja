@@ -21,11 +21,6 @@ def njk_to_j2(template):
     # converts integers to strings.
     template = template.replace("+ loop.index", "~ loop.index")
 
-    # Some component templates (such as radios and character-count) use an
-    # inline if-expression without an else statement to assemble a CSS
-    # class string.
-    template = re.sub(r"\b(.+) if \1(?! else)", r"\1 if \1 else ''", template)
-
     # Nunjucks uses elseif, Jinja uses elif
     template = template.replace("elseif", "elif")
 
