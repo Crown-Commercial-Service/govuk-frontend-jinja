@@ -107,6 +107,17 @@ class NunjucksUndefined(jinja2.runtime.Undefined):
     def __html__(self):
         return str(self)
 
+    # attempt to behave a bit like js's `undefined` when concatenation is attempted
+    def __add__(self, other):
+        if isinstance(other, str):
+            return "undefined" + other
+        return super().__add__(other)
+
+    def __radd__(self, other):
+        if isinstance(other, str):
+            return other + "undefined"
+        return super().__radd__(other)
+
 
 class Environment(jinja2.Environment):
     def __init__(self, **kwargs):

@@ -438,7 +438,6 @@ def test_radios_with_a_divider(env):
     )
 
 
-@pytest.mark.xfail(reason="apostrophe not escaped")
 def test_radios_with_hints_on_items(env):
     template = env.from_string(
 """
@@ -458,7 +457,7 @@ def test_radios_with_hints_on_items(env):
       "value": "gateway",
       "text": "Sign in with Government Gateway",
       "hint": {
-        "text": "You'll have a user ID if you've registered for Self Assessment or filed a tax return online before."
+        "text": "You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before."
       }
     },
     {
@@ -495,7 +494,7 @@ def test_radios_with_hints_on_items(env):
         Sign in with Government Gateway
       </label>
       <span id="gov-1-item-hint" class="govuk-hint govuk-radios__hint">
-        You&#39;ll have a user ID if you&#39;ve registered for Self Assessment or filed a tax return online before.
+        You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.
       </span>
     </div>
 
