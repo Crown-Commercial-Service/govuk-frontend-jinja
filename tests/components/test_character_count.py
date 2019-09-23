@@ -2,7 +2,6 @@
 import pytest
 
 
-@pytest.mark.xfail(reason="inline if-expression not targeted by regex")
 def test_character_count(env):
     template = env.from_string(
 """
@@ -42,7 +41,7 @@ def test_character_count(env):
     )
 
 
-@pytest.mark.xfail(reason="inline if-expression not targeted by regex")
+@pytest.mark.xfail(reason="overzealous escaping")
 def test_character_count_with_hint(env):
     template = env.from_string(
 """
@@ -89,7 +88,6 @@ def test_character_count_with_hint(env):
     )
 
 
-@pytest.mark.xfail(reason="inline if-expression not targeted by regex")
 def test_character_count_with_default_value(env):
     template = env.from_string(
 """
@@ -183,7 +181,6 @@ NW1 6XE
     )
 
 
-@pytest.mark.xfail(reason="inline if-expression not targeted by regex")
 def test_charcter_count_with_custom_rows(env):
     template = env.from_string(
 """
@@ -224,7 +221,7 @@ def test_charcter_count_with_custom_rows(env):
     )
 
 
-@pytest.mark.xfail(reason="inline if-expression not targeted by regex")
+@pytest.mark.xfail(reason="overzealous escaping")
 def test_character_count_with_label_as_page_heading(env):
     template = env.from_string(
 """
@@ -268,7 +265,6 @@ def test_character_count_with_label_as_page_heading(env):
     )
 
 
-@pytest.mark.xfail(reason="inline if-expression not targeted by regex")
 def test_character_count_with_word_count(env):
     template = env.from_string(
 """
@@ -309,7 +305,6 @@ def test_character_count_with_word_count(env):
     )
 
 
-@pytest.mark.xfail(reason="inline if-expression not targeted by regex")
 def test_character_count_with_threshold(env):
     template = env.from_string(
 """

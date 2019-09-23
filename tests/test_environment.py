@@ -63,3 +63,23 @@ class TestNunjucksUndefined:
             ==
             ""
         )
+
+
+def njk_template_from_string(env, source, globals=None, template_class=None):
+    "A copy of Environment.from_string that we can use to convince jinja this is an .njk template"
+    globals = env.make_globals(globals)
+    cls = template_class or env.template_class
+    return cls.from_code(env, env.compile(source, filename="foo.njk"), globals, None)
+
+
+class TestEnvironment:
+    def test_inline_cond_can_behave_like_jinja(self, env):
+        template = env.from_string("{{ ('abc' if 2 > 3).strip() }}")
+
+        with pytest.raises(jinja2.exceptions.UndefinedError, match=r"inline if-expression"):
+            template.render()
+
+    def test_inline_cond_can_behave_like_nunjucks(self, env):
+        template = njk_template_from_string(env, "{{ ('abc' if 2 > 3).strip() }}")
+
+        assert template.render() == ""
