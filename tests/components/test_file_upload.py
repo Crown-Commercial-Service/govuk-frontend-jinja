@@ -151,7 +151,6 @@ r"""
     )
 
 
-@pytest.mark.xfail(reason="autoescape required, HTML entities are being escaped")
 def test_file_upload_with_label_as_page_heading(env):
     template = env.from_string(
 """
