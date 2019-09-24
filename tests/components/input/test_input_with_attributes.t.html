@@ -1,0 +1,12 @@
+{% from "input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  "label": {
+    "text": "Number"
+  },
+  "id": "input-example",
+  "name": "test-name",
+  "attributes": {
+    "pattern": "[0-9]*",
+  },
+}) }}

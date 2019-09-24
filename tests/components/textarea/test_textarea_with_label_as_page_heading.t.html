@@ -1,0 +1,10 @@
+{% from "textarea/macro.njk" import govukTextarea %}
+
+{{ govukTextarea({
+  "id": "textarea-with-page-heading",
+  "name": "address",
+  "label": {
+    "text": "Full address",
+    "isPageHeading": true
+  }
+}) }}
