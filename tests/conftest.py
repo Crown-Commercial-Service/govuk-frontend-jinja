@@ -68,7 +68,12 @@ def file_factory(request):
 
 @pytest.fixture
 def env(loader):
-    return govuk_frontend_jinja.Environment(loader=loader)
+    return govuk_frontend_jinja.Environment(
+        loader=loader,
+        keep_trailing_newline=True,
+        trim_blocks=True,
+        lstrip_blocks=True,
+    )
 
 
 @pytest.fixture(scope="function")
