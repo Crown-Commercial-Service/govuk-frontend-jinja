@@ -1,3 +1,19 @@
+## Unreleased
+
+### New features
+
+* Add support for adding undefined attributes to strings
+* Refactor test fixtures to be easier to update with automated tools
+* Add a tool to generate expected template output from Nunjucks
+* Add tests for accordion component
+* Update tests to v2.13.0 of GOV.UK Frontend! :tada:
+
+### Bugfixes
+
+* Include fix for indentation bug, fixes HTML escaping in file upload and text area components
+* Include fix for short condexprs, fixes character count component
+* We are now all green on checkboxes, file upload, and summary list! :muscle:
+
 ## 2019-09-05 version 0.3.0-alpha
 
 ### New features
