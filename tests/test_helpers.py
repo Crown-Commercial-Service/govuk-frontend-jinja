@@ -17,19 +17,6 @@ This is a line below a bunch of lines which are empty except for whitespace.
     )
 
 
-def test_normalise_whitespace_dedents():
-    assert (
-        pytest.helpers.normalise_whitespace(
-            """
-            This is a multiline string which has been indented
-            in the Python source code for readability.
-            """
-        )
-        ==
-"""This is a multiline string which has been indented\nin the Python source code for readability."""
-    )
-
-
 @pytest.mark.xfail
 def test_normalise_whitespace_can_be_imported_with_another_name():
     from pytest.helpers import normalise_whitespace as s
