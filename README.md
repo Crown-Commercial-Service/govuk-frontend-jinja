@@ -32,8 +32,47 @@ recent version of tox).
 `govuk_frontend_jinja` should match the output of using [Nunjucks] with
 [GOV.UK Frontend] as much as possible.
 
-If you want to see what the output of Nunjucks would be or to create a fixture
-file you can use [Nunjucks-cli].
+The GOV.UK Design System hosts a website with examples for all components that
+can be used to get tests fixtures at [govuk-frontend-review].
+
+Tests for individual components should go in a file named
+`tests/components/<component_name>/test_<component_name>.py`. For instance:
+
+    # tests for accordion component
+    tests/
+    └── components/
+        └── accordion/
+            └── test_accordion.py
+
+To aid in copying tests from govuk-frontend the test suite has support for
+fixture files that follow a set naming scheme. Files containing a template
+should be named `test_<component_name>_<test_name>.t.html`. Files
+containing the expected output of the template engine should be named
+`test_<component_name>_<test_name>.x.html`.
+
+For example, for a test of the accordion component with one section open, the
+test suite expects the following structure of files and folders:
+
+    # tests for accordion component with fixture files
+    tests/
+    └── components/
+        └── accordion/
+            ├── test_accordion.py
+            ├── test_accordion_with_one_section_open.t.html
+            └── test_accordion_with_one_section_open.x.html
+
+To use the fixture files a test must be written that reads and processes them.
+There are two pytest fixtures in our test suite called `template` and
+`expected` that simplify this. To use these, the test function must have the
+same name as the fixture file; returning to our example:
+
+    # test_accordion.py
+    def test_accordion_with_one_section_open(env, template, expected, similar):
+        template = env.from_string(template)
+        assert similar(template.render(), expected)
+
+Autogenerating the pytest test function based on the fixture files so you don't
+need to write it yourself is planned as a future feature.
 
 ## Licence
 
@@ -45,4 +84,5 @@ Open Government 3.0 licence.
 [GOV.UK Frontend]: https://github.com/alphagov/govuk-frontend
 [Nunjucks]: https://mozilla.github.io/nunjucks/
 [Nunjucks-cli]: https://www.npmjs.com/package/nunjucks-cli
+[govuk-frontend-review]: https://govuk-frontend-review.herokuapp.com
 [tox]: https://tox.readthedocs.io/en/latest/index.html
