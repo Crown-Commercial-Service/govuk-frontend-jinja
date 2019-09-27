@@ -6,13 +6,11 @@ pytestmark = pytest.mark.skipif(
 )
 
 
-@pytest.mark.xfail(reason="differences in indentation")
 def test_summary_list(env, similar, template, expected):
     template = env.from_string(template)
     assert similar(template.render(), expected)
 
 
-@pytest.mark.xfail(reason="differences in indentation")
 def test_summary_list_with_actions(env, similar, template, expected):
     template = env.from_string(template)
     assert similar(template.render(), expected)
