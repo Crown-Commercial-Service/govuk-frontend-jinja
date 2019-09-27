@@ -29,7 +29,6 @@ def test_character_count_with_custom_rows(env, similar, template, expected):
     assert similar(template.render(), expected)
 
 
-@pytest.mark.xfail(reason="overzealous escaping")
 def test_character_count_with_label_as_page_heading(env, similar, template, expected):
     template = env.from_string(template)
     assert similar(template.render(), expected)
