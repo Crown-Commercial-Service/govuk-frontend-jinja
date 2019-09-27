@@ -2,9 +2,9 @@
 #
 # Download the govuk-frontend package with component templates for testing.
 
-VERSION="2.4.0"
+VERSION="2.13.0"
 URL="https://github.com/alphagov/govuk-frontend/archive/v${VERSION}.tar.gz"
-SHA256="a8be5ab794aefa906e3710db5ae3520da800182985cd2d44397ab1cbe82544b9"
+SHA256="785683afedaae367ab106d9469080fadc518e670e6ab13cf9e4e17c641981a92"
 
 set -e
 

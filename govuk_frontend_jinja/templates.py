@@ -46,7 +46,7 @@ def njk_to_j2(template):
     # Some templates try to set a variable in an outer block, which is not
     # supported in Jinja. We create a namespace in those templates to get
     # around this.
-    template = re.sub(r"""^([ ]*)({% set describedBy = "" %})""",
+    template = re.sub(r"""^([ ]*)({% set describedBy =( params.*describedBy if params.*describedBy else)? "" %})""",
                       r"\1{%- set nonlocal = namespace() -%}\n\1\2",
                       template,
                       flags=re.M)

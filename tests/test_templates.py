@@ -76,10 +76,12 @@ def test_patches_iteration_of_params_attributes():
     )
 
 
-def test_adds_nonlocal_namespace_if_template_includes_describedBy():
-    template = """
-    {% set describedBy = "" %}
-    """
+@pytest.mark.parametrize("template", (
+    """\n    {% set describedBy = "" %}""",
+    """\n    {% set describedBy = params.describedBy if params.describedBy else "" %}""",
+    """\n    {% set describedBy = params.fieldset.describedBy if params.fieldset.describedBy else "" %}""",
+))
+def test_adds_nonlocal_namespace_if_template_includes_describedBy(template):
     assert "    {%- set nonlocal = namespace() -%}" in njk_to_j2(template)
 
 
