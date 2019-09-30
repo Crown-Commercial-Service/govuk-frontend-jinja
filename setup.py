@@ -14,7 +14,6 @@ setuptools.setup(
         "Flask": ["Flask"],
         "dev": [
             "pytest",
-            "pytest-datafiles",
             "pytest-helpers-namespace",
         ],
     },
