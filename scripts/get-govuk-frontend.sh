@@ -1,5 +1,7 @@
 #!/bin/sh
 #
+# Usage: get-govuk-frontend.sh [--extract-all]
+#
 # Download the govuk-frontend package with component templates for testing.
 
 VERSION="2.13.0"
@@ -21,3 +23,11 @@ mkdir -p node_modules/govuk-frontend
 tar -xf $tarball -C node_modules/govuk-frontend --strip-components=2 "govuk-frontend-${VERSION}/package/"
 
 echo "Installed govuk-frontend v${VERSION} to node_modules"
+
+# extract all
+if [ "$1" = "--extract-all" ]
+then
+  mkdir -p node_modules/govuk-frontend-repository
+  tar -xf $tarball -C node_modules/govuk-frontend-repository --strip-components=1 "govuk-frontend-${VERSION}/"
+  echo "Extracted govuk-frontend-repository v${VERSION} to node_modules"
+fi

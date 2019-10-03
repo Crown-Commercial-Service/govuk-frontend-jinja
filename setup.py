@@ -12,6 +12,10 @@ setuptools.setup(
     ],
     extras_require={
         "Flask": ["Flask"],
+        "app": [
+            "Flask",
+            "PyYAML",
+        ],
         "dev": [
             "pytest",
             "pytest-helpers-namespace",
