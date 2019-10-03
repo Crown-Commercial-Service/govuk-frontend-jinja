@@ -17,7 +17,10 @@ def init_govuk_frontend(app):
     """
     app.jinja_environment = Environment
     jinja_options = app.jinja_options.copy()
-    jinja_options["extensions"].append(NunjucksExtension)
+    if "extensions" in jinja_options:
+        jinja_options["extensions"].append(NunjucksExtension)
+    else:
+        jinja_options["extensions"] = [NunjucksExtension]
     jinja_options["undefined"] = NunjucksUndefined
     app.jinja_options = jinja_options
     return app
