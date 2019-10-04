@@ -203,10 +203,11 @@ class Environment(jinja2.Environment):
             _, parent_path, _ = self.loader.get_source(self, parent)  # find the absolute path of the parent template
             template_path = path.normpath(path.join(path.dirname(parent_path), template))
             # now find that template in one of the loader paths
+            needle = ""
             for p in self.loader.list_templates():
-                if template_path.endswith(p) and p > template:
-                    template = p
-            return template
+                if template_path.endswith(p) and len(p) > len(needle):
+                    needle = p
+            return needle
 
             # otherwise give up
             raise jinja2.exceptions.TemplateNotFound(template)
