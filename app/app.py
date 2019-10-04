@@ -25,12 +25,18 @@ app.jinja_options = {
 }
 
 app.jinja_loader = jinja2.FileSystemLoader(
-    [
-        config_paths["layouts"].__fspath__(),
-        config_paths["views"].__fspath__(),
-        config_paths["components"].__fspath__(),
-        config_paths["src"].__fspath__(),
-    ]
+    list(
+        map(
+            str,
+            [
+                config_paths["layouts"],
+                config_paths["views"],
+                config_paths["examples"],
+                config_paths["components"],
+                config_paths["src"],
+            ],
+        )
+    )
 )
 
 init_govuk_frontend(app)
@@ -38,7 +44,12 @@ init_govuk_frontend(app)
 app.add_template_filter(
     helpers.component_name_to_macro_name, name="componentNameToMacroName"
 )
+
 app.add_template_filter(helpers.dump_filter, name="dump")
+
+# Replace escape with forceescape
+# TODO: why do we need this?
+app.add_template_filter(jinja2.filters.do_forceescape, name="e")
 
 
 @app.route("/public/<path:filename>")
@@ -59,8 +70,19 @@ def assets(filename):
     )
 
 
+# Define middleware for all routes
+@app.context_processor
+def inject_legacy_query():
+    return {"legacyQuery": "?legacy=1" if request.args.get("legacy") else ""}
+
+
+# Define routes
+
+
 @app.route("/")
 def index():
+    """Index page - render the component list template"""
+
     components = helpers.all_components
     examples = [f.name for f in config_paths["examples"].iterdir()]
     full_page_examples = [f.name for f in config_paths["fullPageExamples"].iterdir()]
@@ -73,21 +95,37 @@ def index():
     )
 
 
+@app.route("/components/all")
+def all_components():
+    """All components view"""
+    component_data = []
+
+    for component in helpers.all_components:
+        _component_data = helpers.get_component_data(component)
+        default_example = [
+            example
+            for example in _component_data["examples"]
+            if example["name"] == "default"
+        ]
+        component_data.append({"componentName": component, "examples": default_example})
+
+    return render_template("all-components.njk", componentData=component_data)
+
+
 @app.route("/components/<component>")
 def component(component):
+    """Component 'README' page"""
     component_data = helpers.get_component_data(component)
 
     return render_template(
-        "component.njk",
-        componentData=component_data,
-        componentPath=component,
-        legacyQuery="",
+        "component.njk", componentData=component_data, componentPath=component
     )
 
 
 @app.route("/components/<component>/preview")
 @app.route("/components/<component>/<example>/preview")
 def component_preview(component, example="default"):
+    """Component example preview"""
     component_data = helpers.get_component_data(component)
     preview_layout = component_data.get("previewLayout", "layout")
     example_config = [
@@ -111,6 +149,11 @@ def component_preview(component, example="default"):
         bodyClasses=body_classes,
         componentPath=component,
         componentView=component_view,
-        legacyQuery="",
         previewLayout=preview_layout,
     )
+
+
+@app.route("/examples/<example>")
+def example(example):
+    """Example view"""
+    return render_template(f"{example}/index.njk")
