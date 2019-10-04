@@ -1,7 +1,7 @@
 
 from flask.templating import Environment as FlaskEnvironment
 from govuk_frontend_jinja.templates import Environment as NunjucksEnvironment
-from govuk_frontend_jinja.templates import NunjucksExtension, NunjucksUndefined
+from govuk_frontend_jinja.templates import NunjucksExtension, NunjucksUndefined, indent_njk
 
 
 class Environment(FlaskEnvironment, NunjucksEnvironment):
@@ -23,4 +23,5 @@ def init_govuk_frontend(app):
         jinja_options["extensions"] = [NunjucksExtension]
     jinja_options["undefined"] = NunjucksUndefined
     app.jinja_options = jinja_options
+    app.add_template_filter(indent_njk)
     return app
