@@ -35,6 +35,7 @@ def test_init_govuk_frontend(app):
         in
         env.extensions
     )
+    assert "indent_njk" in env.filters
 
 
 def test_render_template(app):
