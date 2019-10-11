@@ -1,8 +1,8 @@
-GOV.UK Frontend Jinja2 Client
-=============================
+GOV.UK Frontend (Jinja)
+=======================
 
 This Python package includes classes and modules to make it easier to use the
-[GOV.UK Frontend] in your Jinja2-powered Python web app.
+[GOV.UK Frontend] in your [Jinja2][Jinja]-powered Python web app.
 
 > **NOTE**: This repository is maintained by GDS developers, but **not** the
 > GOV.UK Design System team. If you have questions or need support raise an
@@ -13,7 +13,13 @@ This Python package includes classes and modules to make it easier to use the
 Somewhere in your `app.py` (or wherever you do your app initialisation):
 
 ```
+import jinja2
 from govuk_frontend_jinja.flask_ext import init_govuk_frontend
+
+app.jinja_loader = jinja2.FileSystemLoader((
+    "templates",
+    "node_modules/govuk-frontend",  # path to govuk-frontend package
+))
 
 init_govuk_frontend(app)
 ```
@@ -74,14 +80,30 @@ same name as the fixture file; returning to our example:
 Autogenerating the pytest test function based on the fixture files so you don't
 need to write it yourself is planned as a future feature.
 
+## Credits
+
+The initial code for this tool was based on work by [HMLR], particularly @andymantell 🏆
+
+All of the HTML and templates that this tool works on were produced by the [GOV.UK Design System] 🏅
+
+And of course, none of this would be possible without [Nunjucks] and [Jinja] 🥂
+
 ## Licence
 
-Unless stated otherwise, the codebase is released under the MIT License. This
-covers both the codebase and any sample code in the documentation. The
-documentation is &copy; Crown copyright and available under the terms of the
-Open Government 3.0 licence.
+Unless stated otherwise, the codebase is released under [the MIT License][mit].
+This covers both the codebase and any sample code in the documentation.
 
+The documentation is [&copy; Crown copyright][copyright] and available under the terms
+of the [Open Government 3.0][ogl] licence.
+
+[mit]: LICENCE.txt
+[copyright]: http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/
+[ogl]: http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+
+[GOV.UK Design System]: https://design-system.service.gov.uk
 [GOV.UK Frontend]: https://github.com/alphagov/govuk-frontend
+[HMLR]: https://github.com/LandRegistry
+[Jinja]: https://palletsprojects.com/p/jinja/
 [Nunjucks]: https://mozilla.github.io/nunjucks/
 [Nunjucks-cli]: https://www.npmjs.com/package/nunjucks-cli
 [govuk-frontend-review]: https://govuk-frontend-review.herokuapp.com
