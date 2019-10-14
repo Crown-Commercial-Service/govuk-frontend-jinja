@@ -15,7 +15,7 @@ def test_replaces_items_getattr_with_getitem():
         )
         ==
 """
-{% for item in params['items'] %}
+{% for item in params.items__njk %}
   item
 {% endfor %}
 """
@@ -115,12 +115,4 @@ x({
     'describedBy': nonlocal.describedBy,
 })
 """
-    )
-
-
-def test_replaces_length_getattr_with_length_filter():
-    assert (
-        njk_to_j2("{{ params.length }}")
-        ==
-        "{{ params | length }}"
     )
