@@ -3,6 +3,8 @@ import pytest
 
 flask = pytest.importorskip("flask", reason="requires Flask")
 
+import jinja2
+
 import govuk_frontend_jinja
 from govuk_frontend_jinja.flask_ext import Environment, init_govuk_frontend
 
@@ -38,3 +40,19 @@ def test_init_govuk_frontend(app):
 def test_render_template(app):
     with app.app_context():
         flask.render_template("template.njk")
+
+
+def test_autoescape_is_enabled_for_njk_files_by_default(app):
+    loader = jinja2.DictLoader({"test.njk": "{{ text }}"})
+    app.jinja_loader = loader
+
+    with app.app_context():
+        assert flask.render_template("test.njk", text="<script>") == "&lt;script&gt;"
+
+
+def test_autoescape_is_enabled_for_njk_files_by_default(app):
+    loader = jinja2.DictLoader({"test.njk": "{% autoescape on %}{{ text }}{% endautoescape %}"})
+    app.jinja_loader = loader
+
+    with app.app_context():
+        assert flask.render_template("test.njk", text="<script>") == "<script>"

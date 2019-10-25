@@ -1,3 +1,9 @@
+## Unreleased
+
+### New features
+
+* Enable autoescaping for Nunjucks templates in Flask
+
 ## 2019-09-27 version 0.4.0-alpha
 
 ### New features

@@ -1,5 +1,6 @@
 
 from flask.templating import Environment as FlaskEnvironment
+from jinja2 import select_autoescape
 from govuk_frontend_jinja.templates import Environment as NunjucksEnvironment
 from govuk_frontend_jinja.templates import NunjucksExtension, NunjucksUndefined
 
@@ -16,6 +17,7 @@ def init_govuk_frontend(app):
     >>> init_govuk_frontend(app)
     """
     app.jinja_environment = Environment
+    app.select_jinja_autoescape = select_autoescape(("html", "htm", "xml", "xhtml", "njk"))
     jinja_options = app.jinja_options.copy()
     jinja_options["extensions"].append(NunjucksExtension)
     jinja_options["undefined"] = NunjucksUndefined

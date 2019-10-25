@@ -7,7 +7,11 @@ import govuk_frontend_jinja
 def env(loader):
     return govuk_frontend_jinja.Environment(
         # for some reason the page_template tests only pass with trim_blocks=False
-        loader=loader, keep_trailing_newline=True, trim_blocks=False, lstrip_blocks=True,
+        loader=loader,
+        autoescape=True,
+        keep_trailing_newline=True,
+        trim_blocks=False,
+        lstrip_blocks=True,
     )
 
 
