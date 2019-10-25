@@ -50,7 +50,7 @@ def test_autoescape_is_enabled_for_njk_files_by_default(app):
         assert flask.render_template("test.njk", text="<script>") == "&lt;script&gt;"
 
 
-def test_autoescape_is_enabled_for_njk_files_by_default(app):
+def test_autoescape_can_be_disabled(app):
     loader = jinja2.DictLoader({"test.njk": "{% autoescape on %}{{ text }}{% endautoescape %}"})
     app.jinja_loader = loader
 
