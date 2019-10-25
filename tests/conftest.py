@@ -43,7 +43,11 @@ def loader(govuk_frontend):
 @pytest.fixture
 def env(loader):
     return govuk_frontend_jinja.Environment(
-        loader=loader, keep_trailing_newline=True, trim_blocks=True, lstrip_blocks=True
+        loader=loader,
+        autoescape=True,
+        keep_trailing_newline=True,
+        trim_blocks=True,
+        lstrip_blocks=True,
     )
 
 
