@@ -1,12 +1,4 @@
-import pytest
-
-
 def test_radios(env, similar, template, expected):
-    template = env.from_string(template)
-    assert similar(template.render(), expected)
-
-
-def test_radios_without_fieldset(env, similar, template, expected):
     template = env.from_string(template)
     assert similar(template.render(), expected)
 

@@ -71,7 +71,7 @@ def indent_njk(
     s, width=4, first=False, blank=False, indentfirst=None
 ):
     """Return a copy of the string with each line indented by 4 spaces."""
-    
+
     # Copied from
     # https://github.com/pallets/jinja/blob/a2f5e2c7972c4d5148c1c75c724e24950d8605bc/jinja2/filters.py#L536-L580
     # to include an unreleased fix for https://github.com/pallets/jinja/pull/826
