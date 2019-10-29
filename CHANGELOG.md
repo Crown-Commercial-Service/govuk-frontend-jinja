@@ -1,8 +1,14 @@
-## Unreleased
+## 2019-10-29 version 0.5.0-alpha
 
 ### New features
 
-* Enable autoescaping for Nunjucks templates in Flask
+* Enable autoescaping for Nunjucks templates in Flask ([#37](https://github.com/alphagov/govuk-frontend-jinja/pull/37))
+
+### Bugfixes
+
+* We have 100% coverage for components in GOV.UK Design System v2.13.0! :raised_hands: ([#3](https://github.com/alphagov/govuk-frontend-jinja/issues/3))
+* Fix tests for page template ([#32](https://github.com/alphagov/govuk-frontend-jinja/pull/32))
+* Fix some instances where Jinja was unable to resolve `params.items` ([#24](https://github.com/alphagov/govuk-frontend-jinja/pull/24))
 
 ## 2019-09-27 version 0.4.0-alpha
 
