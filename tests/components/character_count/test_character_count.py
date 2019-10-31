@@ -1,12 +1,8 @@
-import pytest
-
-
 def test_character_count(env, similar, template, expected):
     template = env.from_string(template)
     assert similar(template.render(), expected)
 
 
-@pytest.mark.xfail(reason="overzealous escaping")
 def test_character_count_with_hint(env, similar, template, expected):
     template = env.from_string(template)
     assert similar(template.render(), expected)
