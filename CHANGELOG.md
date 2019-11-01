@@ -1,3 +1,9 @@
+## 2019-11-01 version 0.5.1-alpha
+
+### Bugfixes
+
+* Fix issue where indent_njk was not available in Flask ([#40](https://github.com/alphagov/govuk-frontend-jinja/issues/40))
+
 ## 2019-10-29 version 0.5.0-alpha
 
 ### New features
