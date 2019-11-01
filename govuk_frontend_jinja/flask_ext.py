@@ -5,7 +5,7 @@ from govuk_frontend_jinja.templates import Environment as NunjucksEnvironment
 from govuk_frontend_jinja.templates import NunjucksExtension, NunjucksUndefined
 
 
-class Environment(FlaskEnvironment, NunjucksEnvironment):
+class Environment(NunjucksEnvironment, FlaskEnvironment):
     pass
 
 
