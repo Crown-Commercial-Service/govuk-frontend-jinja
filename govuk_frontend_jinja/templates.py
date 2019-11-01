@@ -191,10 +191,10 @@ _builtin_function_or_method_type = type({}.keys)
 class Environment(jinja2.Environment):
     code_generator_class = NunjucksCodeGenerator
 
-    def __init__(self, **kwargs):
+    def __init__(self, *args, **kwargs):
         kwargs.setdefault("extensions", [NunjucksExtension])
         kwargs.setdefault("undefined", NunjucksUndefined)
-        super().__init__(**kwargs)
+        super().__init__(*args, **kwargs)
         self.filters["indent_njk"] = indent_njk
 
     def join_path(self, template, parent):
