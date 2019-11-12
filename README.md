@@ -6,7 +6,7 @@ This Python package includes classes and modules to make it easier to use the
 
 > **NOTE**: This repository is maintained by GDS developers, but **not** the
 > GOV.UK Design System team. If you have questions or need support raise an
-> issue against this repo [here](#issues).
+> issue against this repo [here](https://github.com/alphagov/govuk-frontend-jinja/issues).
 
 ## Using with Flask
 
@@ -82,7 +82,7 @@ need to write it yourself is planned as a future feature.
 
 ## Credits
 
-The initial code for this tool was based on work by [HMLR], particularly @andymantell 🏆
+The initial code for this tool was based on work by [HMLR], particularly [@andymantell](https://github.com/andymantell) 🏆
 
 All of the HTML and templates that this tool works on were produced by the [GOV.UK Design System] 🏅
 
