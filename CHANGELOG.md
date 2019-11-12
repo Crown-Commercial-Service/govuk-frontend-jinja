@@ -1,3 +1,9 @@
+## Unreleased
+
+### Bugfixes
+
+* Fix links in README (thanks [@dalepotter](https://gitbhub.com/dalepotter)!) ([#34](https://github.com/alphagov/govuk-frontend-jinja/pull/34))
+
 ## 2019-11-01 version 0.5.1-alpha
 
 ### Bugfixes
