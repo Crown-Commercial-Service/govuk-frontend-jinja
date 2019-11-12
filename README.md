@@ -1,5 +1,7 @@
-GOV.UK Frontend (Jinja)
-=======================
+
+GOV.UK Frontend (Jinja) ·
+[![Build Status](https://travis-ci.com/alphagov/govuk-frontend-jinja.svg?branch=master)](https://travis-ci.com/alphagov/govuk-frontend-jinja)
+=========================
 
 This Python package includes classes and modules to make it easier to use the
 [GOV.UK Frontend] in your [Jinja2][Jinja]-powered Python web app.
