@@ -10,6 +10,12 @@ This Python package includes classes and modules to make it easier to use the
 > GOV.UK Design System team. If you have questions or need support raise an
 > issue against this repo [here](https://github.com/alphagov/govuk-frontend-jinja/issues).
 
+## Installing
+
+```shell
+pip install git+https://github.com/alphagov/govuk-frontend-jinja.git
+```
+
 ## Using with Flask
 
 Somewhere in your `app.py` (or wherever you do your app initialisation):
