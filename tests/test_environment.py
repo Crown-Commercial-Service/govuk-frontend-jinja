@@ -83,3 +83,21 @@ class TestEnvironment:
         template = njk_template_from_string(env, "{{ ('abc' if 2 > 3).strip() }}")
 
         assert template.render() == ""
+
+
+class TestStrictEquality:
+    def test_jinja_raises_syntax_error_for_strict_equality_operator(self, env):
+        with pytest.raises(jinja2.exceptions.TemplateSyntaxError, match="unexpected '='"):
+            env.from_string("{% if 1 === 1 %}always true{% endif %}")
+
+    def test_njk_has_strict_equality_operator(self, env):
+        template = njk_template_from_string(env, "{% if 1 === 1 %}always true{% endif %}")
+
+        assert template.render() == "always true"
+
+    def test_strict_equality_operator(self, env):
+        template = njk_template_from_string(env, "{% if var === true %}true if true{% endif %}")
+
+        assert template.render(var=True) == "true if true"
+        assert template.render(var=False) == ""
+        assert template.render(var=1) == ""
