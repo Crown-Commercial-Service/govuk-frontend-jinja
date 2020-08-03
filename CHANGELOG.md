@@ -1,8 +1,10 @@
-## Unreleased
+## 2020-08-03 version 0.5.2-alpha
 
 ### Bugfixes
 
 * Fix links in README (thanks [@dalepotter](https://gitbhub.com/dalepotter)!) ([#34](https://github.com/alphagov/govuk-frontend-jinja/pull/34))
+
+* You can now use the Nunjucks strict equality operator `===` in templates ([#50](https://github.com/alphagov/govuk-frontend-jinja/pull/50))
 
 ## 2019-11-01 version 0.5.1-alpha
 
