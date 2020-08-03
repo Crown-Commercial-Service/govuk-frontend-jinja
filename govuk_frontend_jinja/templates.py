@@ -3,6 +3,7 @@ from collections.abc import Sized
 
 import jinja2
 import jinja2.ext
+from jinja2.lexer import Token
 from markupsafe import Markup
 
 import os.path as path
@@ -108,6 +109,24 @@ def indent_njk(
 
 
 class NunjucksExtension(jinja2.ext.Extension):
+
+    def filter_stream(self, stream):
+        if stream.filename and stream.filename.endswith(".njk"):
+            return self.filter_njk_stream(stream)
+        else:
+            return stream
+
+    def filter_njk_stream(self, stream):
+        for token in stream:
+
+            # patch strict equality operator `===`
+            if token.test("eq:==") and stream.current.test("assign:="):
+                yield Token(token.lineno, "name", "is")
+                yield Token(token.lineno, "name", "sameas")
+                stream.skip(1)
+            else:
+                yield token
+
     def preprocess(self, source, name, filename=None):
         if filename and filename.endswith(".njk"):
             return njk_to_j2(source)
