@@ -1,4 +1,4 @@
-## Unreleased
+## 2020-08-03 version 0.5.2-alpha
 
 ### Bugfixes
 
