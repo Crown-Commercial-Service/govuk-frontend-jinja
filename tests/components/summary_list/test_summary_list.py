@@ -16,6 +16,11 @@ def test_summary_list_with_actions(env, similar, template, expected):
     assert similar(template.render(), expected)
 
 
+def test_summary_list_with_some_actions(env, similar, template, expected):
+    template = env.from_string(template)
+    assert similar(template.render(), expected)
+
+
 def test_summary_list_without_actions(env, similar, template, expected):
     template = env.from_string(template)
     assert similar(template.render(), expected)

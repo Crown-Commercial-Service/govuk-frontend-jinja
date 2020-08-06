@@ -56,6 +56,12 @@ def njk_to_j2(template):
     # Change any references to describedBy to be nonlocal.describedBy,
     # unless describedBy is a dictionary key (i.e. quoted or dotted).
     template = re.sub(r"""(?<!['".])describedBy""", r"nonlocal.describedBy", template)
+    # govukSummaryList
+    template = re.sub(r"""^([ ]*)({% set anyRowHasActions = false %})""",
+                      r"\1{%- set nonlocal = namespace() -%}\n\1\2",
+                      template,
+                      flags=re.M)
+    template = re.sub(r"""(?<!['".])anyRowHasActions""", r"nonlocal.anyRowHasActions", template)
 
     # Issue#16: some component templates test the length of an array by trying
     # to get an attribute `.length`. We need to handle this specially because
