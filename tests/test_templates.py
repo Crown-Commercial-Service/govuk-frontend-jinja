@@ -116,3 +116,27 @@ x({
 })
 """
     )
+
+
+def test_adds_nonlocal_namespace_if_template_includes_anyRowHasActions():
+    template = """{% set anyRowHasActions = false %}"""
+    assert "{%- set nonlocal = namespace() -%}" in njk_to_j2(template)
+
+
+def test_patches_anyRowHasActions_to_set_nonlocal():
+    template = \
+"""
+{% set anyRowHasActions = false %}
+{% set anyRowHasActions = true if row.actions.items else anyRowHasActions %}
+{% elseif anyRowHasActions %}
+"""
+    assert (
+        njk_to_j2(template)
+        ==
+"""
+{%- set nonlocal = namespace() -%}
+{% set nonlocal.anyRowHasActions = false %}
+{% set nonlocal.anyRowHasActions = true if row.actions.items__njk else nonlocal.anyRowHasActions %}
+{% elif nonlocal.anyRowHasActions %}
+"""
+    )
