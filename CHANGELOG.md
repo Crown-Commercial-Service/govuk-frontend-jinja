@@ -1,8 +1,14 @@
+## Unreleased
+
+### Bugfixes
+
+* You can now use summary lists with actions (thanks [@domoscargin](https://github.com/domoscargin)!) ([#52](https://github.com/alphagov/govuk-frontend-jinja/pull/52))
+
 ## 2020-08-03 version 0.5.2-alpha
 
 ### Bugfixes
 
-* Fix links in README (thanks [@dalepotter](https://gitbhub.com/dalepotter)!) ([#34](https://github.com/alphagov/govuk-frontend-jinja/pull/34))
+* Fix links in README (thanks [@dalepotter](https://github.com/dalepotter)!) ([#34](https://github.com/alphagov/govuk-frontend-jinja/pull/34))
 
 * You can now use the Nunjucks strict equality operator `===` in templates ([#50](https://github.com/alphagov/govuk-frontend-jinja/pull/50))
 
