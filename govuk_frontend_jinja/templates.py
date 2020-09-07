@@ -24,6 +24,15 @@ def njk_to_j2(template):
     # converts integers to strings.
     template = template.replace("+ loop.index", "~ loop.index")
 
+    # The Character Count component in version 3 concatenates the word count
+    # with the hint text. As the word count is an integer this causes a 
+    # TypeError in Python. Jinja2 has an operator `~` for string
+    # concatenation that converts integers to strings.
+    template = template.replace(
+        "+ (params.maxlength or params.maxwords) +",
+        "~ (params.maxlength or params.maxwords) ~"
+    )
+
     # Nunjucks uses elseif, Jinja uses elif
     template = template.replace("elseif", "elif")
 
