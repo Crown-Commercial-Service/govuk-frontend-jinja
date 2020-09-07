@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="govuk-frontend-jinja",
-    version="0.5.3-alpha",
+    version="0.5.4-alpha",
     author="Laurence de Bruxelles",
     author_email="author@example.com",
     description="Tools to use the GOV.UK Design System with Jinja-powered Python apps",

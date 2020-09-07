@@ -1,3 +1,9 @@
+## Unreleased
+
+### Bugfixes
+
+* Fix int concatenation error in v3.5.0+ versions of Character Count ([#54](https://github.com/alphagov/govuk-frontend-jinja/pull/54))
+
 ## 2020-08-6 version 0.5.3-alpha
 
 ### Bugfixes

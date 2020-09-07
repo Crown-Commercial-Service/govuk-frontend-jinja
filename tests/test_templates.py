@@ -39,6 +39,22 @@ def test_replaces_add_loop_index_with_concatenate():
 """
     )
 
+def test_replaces_add_max_words_with_concatenate():
+    assert (
+        njk_to_j2(
+"""
+{{ macro({
+  text: 'You can enter up to ' + (params.maxlength or params.maxwords) + (' words' if params.maxwords else ' characters')
+}) }}
+"""
+        )
+        ==
+"""
+{{ macro({
+  'text': 'You can enter up to ' ~ (params.maxlength or params.maxwords) ~ (' words' if params.maxwords else ' characters')
+}) }}
+"""
+    )
 
 def test_quotes_dictionary_keys():
     assert (
