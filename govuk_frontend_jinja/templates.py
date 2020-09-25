@@ -55,6 +55,14 @@ def njk_to_j2(template):
     template = template.replace("for attribute, value in params.attributes",
                                 "for attribute, value in params.attributes.items()")
 
+    # The attributes field of a govukCheckbox item is supposed to be a dictionary,
+    # and in the template for the checkbox component the keys and values are iterated.
+    # In Python the default iterator for a dict is .keys(), but we want .items().
+    # This only works because our undefined implements .items().
+    template = template.replace("for attribute, value in item.attributes",
+                                "for attribute, value in item.attributes.items()")
+
+
     # Some templates try to set a variable in an outer block, which is not
     # supported in Jinja. We create a namespace in those templates to get
     # around this.
