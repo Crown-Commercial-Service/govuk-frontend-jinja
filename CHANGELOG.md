@@ -1,3 +1,9 @@
+## 2020-09-25 version 0.5.5-alpha
+
+### Bugfixes
+
+* Fix Checkboxes `for attribute, value` iteration ([#56](https://github.com/alphagov/govuk-frontend-jinja/pull/56))
+
 ## 2020-09-08 version 0.5.4-alpha
 
 ### Bugfixes
