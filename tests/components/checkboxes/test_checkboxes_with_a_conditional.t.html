@@ -1,0 +1,47 @@
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+{% from "input/macro.njk" import govukInput %}
+
+{% set emailHtml %}
+{{ govukInput({
+  "id": "contact-by-email",
+  "name": "contact-by-email",
+  "type": "email",
+  "spellcheck": false,
+  "classes": "govuk-!-width-one-third",
+  "label": {
+    "text": "Email address"
+  }
+}) }}
+{% endset -%}
+
+{{ govukCheckboxes({
+  "idPrefix": "contact",
+  "name": "contact",
+  "fieldset": {
+    "legend": {
+      "text": "How would you prefer to be contacted?",
+      "isPageHeading": true,
+      "classes": "govuk-fieldset__legend--l"
+    }
+  },
+  "hint": {
+    "text": "Select one option."
+  },
+  "items": [
+    {
+      "value": "email",
+      "text": "Email",
+      "conditional": {
+        "html": emailHtml
+      }
+    },
+    {
+      "value": "phone",
+      "text": "Phone",
+    },
+    {
+      "value": "text",
+      "text": "Text message",
+    }
+  ]
+}) }}
