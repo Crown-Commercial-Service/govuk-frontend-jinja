@@ -167,7 +167,9 @@ def test_patches_anyRowHasActions_to_set_nonlocal():
 
 
 def test_adds_nonlocal_namespace_if_template_includes_isConditional():
-    template = """{% set isConditional = false %}"""
+    # govukRadios and govukCheckboxes both set describedBy before isConditional
+    # so we should have nonlocal set via our describedBy patch
+    template = """{% set describedBy = "" %}{% set isConditional = false %}"""
     assert "{%- set nonlocal = namespace() -%}" in njk_to_j2(template)
 
 
@@ -183,7 +185,6 @@ def test_patches_isConditional_to_set_nonlocal():
         njk_to_j2(template)
         ==
 """
-{%- set nonlocal = namespace() -%}
 {% set nonlocal.isConditional = false %}
 {% set nonlocal.isConditional = true %}
 {%- if nonlocal.isConditional %} data-module="radios"{% endif -%}>
