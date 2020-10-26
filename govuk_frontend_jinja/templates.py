@@ -79,6 +79,10 @@ def njk_to_j2(template):
                       template,
                       flags=re.M)
     template = re.sub(r"""(?<!['".])anyRowHasActions""", r"nonlocal.anyRowHasActions", template)
+    # govukRadios and govukCheckboxes
+    # Since both of these templates set describedBy before isConditional, we can use
+    # the existing nonlocal.
+    template = re.sub(r"""(?<!['".])isConditional""", r"nonlocal.isConditional", template)
 
     # Issue#16: some component templates test the length of an array by trying
     # to get an attribute `.length`. We need to handle this specially because
