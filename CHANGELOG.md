@@ -1,3 +1,9 @@
+## Unreleased
+
+### Bugfixes
+
+* Fix support for conditional content on Checkboxes and Radios ([#58](https://github.com/alphagov/govuk-frontend-jinja/pull/58))
+
 ## 2020-09-25 version 0.5.5-alpha
 
 ### Bugfixes
