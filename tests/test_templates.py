@@ -100,6 +100,14 @@ def test_patches_iteration_of_item_attributes():
     )
 
 
+def test_patches_iteration_of_cell_attributes():
+    assert (
+        njk_to_j2("{%- for attribute, value in cell.attributes %}{% endfor -%}")
+        ==
+        "{%- for attribute, value in cell.attributes.items() %}{% endfor -%}"
+    )
+
+
 @pytest.mark.parametrize("template", (
     """\n    {% set describedBy = "" %}""",
     """\n    {% set describedBy = params.describedBy if params.describedBy else "" %}""",
