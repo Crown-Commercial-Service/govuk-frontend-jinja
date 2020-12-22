@@ -84,27 +84,17 @@ def test_patches_govuk_fieldset_definition():
     )
 
 
-def test_patches_iteration_of_params_attributes():
+@pytest.mark.parametrize("object", (
+    "params",
+    "item",
+    "cell",
+    "action"
+))
+def test_patches_iteration_of_attributes(object):
     assert (
-        njk_to_j2("{%- for attribute, value in params.attributes %}{% endfor -%}")
+        njk_to_j2("{%- for attribute, value in " f"{object}" ".attributes %}{% endfor -%}")
         ==
-        "{%- for attribute, value in params.attributes.items() %}{% endfor -%}"
-    )
-
-
-def test_patches_iteration_of_item_attributes():
-    assert (
-        njk_to_j2("{%- for attribute, value in item.attributes %}{% endfor -%}")
-        ==
-        "{%- for attribute, value in item.attributes.items() %}{% endfor -%}"
-    )
-
-
-def test_patches_iteration_of_cell_attributes():
-    assert (
-        njk_to_j2("{%- for attribute, value in cell.attributes %}{% endfor -%}")
-        ==
-        "{%- for attribute, value in cell.attributes.items() %}{% endfor -%}"
+        "{%- for attribute, value in " f"{object}" ".attributes.items() %}{% endfor -%}"
     )
 
 

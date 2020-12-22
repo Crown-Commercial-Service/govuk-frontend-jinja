@@ -48,27 +48,19 @@ def njk_to_j2(template):
     template = template.replace("macro govukFieldset(params)",
                                 "macro govukFieldset(params, caller=none)")
 
-    # The attributes field of params for govukInput is supposed to be a dictionary,
-    # and in the template for the input component the keys and values are iterated.
-    # In Python the default iterator for a dict is .keys(), but we want .items().
-    # This only works because our undefined implements .items().
-    template = template.replace("for attribute, value in params.attributes",
-                                "for attribute, value in params.attributes.items()")
-
-    # The attributes field of a govukCheckbox item is supposed to be a dictionary,
-    # and in the template for the checkbox component the keys and values are iterated.
-    # In Python the default iterator for a dict is .keys(), but we want .items().
-    # This only works because our undefined implements .items().
-    template = template.replace("for attribute, value in item.attributes",
-                                "for attribute, value in item.attributes.items()")    
-    
-    # The attributes field of a govukTable cell is supposed to be a dictionary,
-    # and in the template for the table component the keys and values are iterated.
-    # In Python the default iterator for a dict is .keys(), but we want .items().
-    # This only works because our undefined implements .items().
-    template = template.replace("for attribute, value in cell.attributes",
-                                "for attribute, value in cell.attributes.items()")
-
+    # Many components feature an attributes field, which is supposed to be
+    # a dictionary. In the template for these components, the keys and values
+    # are iterated. In Python, the default iterator for a dict is .keys(), but
+    # we want .items().
+    # This only works because our undefined implements .items()
+    # We've tested this explicitly with: govukInput, govukCheckbox, govukTable,
+    # govukSummaryList
+    template = re.sub(
+        r"for attribute, value in (params|item|cell|action).attributes",
+        r"for attribute, value in \1.attributes.items()",
+        template,
+        flags=re.M
+    )
 
     # Some templates try to set a variable in an outer block, which is not
     # supported in Jinja. We create a namespace in those templates to get
