@@ -1,3 +1,9 @@
+## Unreleased
+
+### Bugfixes
+
+* Fix Summary List `for attribute, value` iteration ([#62](https://github.com/alphagov/govuk-frontend-jinja/pull/62))
+
 ## 2020-12-14 version 0.5.7-alpha
 
 ### Bugfixes
