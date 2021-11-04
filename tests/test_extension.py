@@ -41,6 +41,7 @@ class TestExtensionWithFileSystemLoader:
         )
 
     def test_preprocesses_nunjucks_template(self, env, tmpdir, njk_to_j2):
+        njk_to_j2.return_value = "foobar"
         template_file = tmpdir.join("template.njk")
         template_file.write("foobar")
         env.get_template("template.njk")

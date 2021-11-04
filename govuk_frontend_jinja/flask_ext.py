@@ -18,8 +18,9 @@ def init_govuk_frontend(app):
     """
     app.jinja_environment = Environment
     app.select_jinja_autoescape = select_autoescape(("html", "htm", "xml", "xhtml", "njk"))
-    jinja_options = app.jinja_options.copy()
-    jinja_options["extensions"].append(NunjucksExtension)
-    jinja_options["undefined"] = NunjucksUndefined
-    app.jinja_options = jinja_options
+    app.jinja_env.add_extension(extension=NunjucksExtension)
+    app.jinja_env.undefined = NunjucksUndefined
+    # jinja_options = app.jinja_options.copy()
+    # jinja_options["undefined"] = NunjucksUndefined
+    # app.jinja_options = jinja_options
     return app
