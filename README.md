@@ -12,7 +12,7 @@ This Python package includes classes and modules to make it easier to use the
 ## Installing
 
 ```shell
-pip install git+https://github.com/alphagov/govuk-frontend-jinja.git
+pip install git+https://github.com/Crown-Commercial-Service/govuk-frontend-jinja.git
 ```
 
 ## Using with Flask
