@@ -1,0 +1,9 @@
+{% from "warning-text/macro.njk" import govukWarningText %}
+
+{{ govukWarningText({
+    "text": "You can be fined up to \u00a35,000 if you don\u2019t register.",
+    "attributes": {
+        "id": "my-warning-text",
+        "data-test": "attribute"
+    }
+}) }}

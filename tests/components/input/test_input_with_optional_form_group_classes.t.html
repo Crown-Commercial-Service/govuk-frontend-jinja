@@ -1,0 +1,12 @@
+{% from "input/macro.njk" import govukInput %}
+
+{{ govukInput({
+    "label": {
+        "text": "National Insurance number"
+    },
+    "id": "input-example",
+    "name": "test-name",
+    "formGroup": {
+        "classes": "extra-class"
+    }
+}) }}

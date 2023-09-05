@@ -1,0 +1,10 @@
+{% from "date-input/macro.njk" import govukDateInput %}
+
+{{ govukDateInput({
+    "id": "with-fieldset-html",
+    "fieldset": {
+        "legend": {
+            "html": "What is your <b>date of birth</b>?"
+        }
+    }
+}) }}

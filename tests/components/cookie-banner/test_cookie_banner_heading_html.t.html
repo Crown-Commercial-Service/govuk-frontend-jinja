@@ -1,0 +1,9 @@
+{% from "cookie-banner/macro.njk" import govukCookieBanner %}
+
+{{ govukCookieBanner({
+    "messages": [
+        {
+            "headingHtml": "Cookies on <span>my service</span>"
+        }
+    ]
+}) }}

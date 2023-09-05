@@ -1,0 +1,21 @@
+{% from "header/macro.njk" import govukHeader %}
+
+{{ govukHeader({
+    "serviceName": "Service Name",
+    "serviceUrl": "/components/header",
+    "navigation": [
+        {
+            "href": "#1",
+            "text": "<em>Navigation item 1</em>",
+            "active": true
+        },
+        {
+            "href": "#2",
+            "text": "<em>Navigation item 2</em>"
+        },
+        {
+            "href": "#3",
+            "text": "<em>Navigation item 3</em>"
+        }
+    ]
+}) }}

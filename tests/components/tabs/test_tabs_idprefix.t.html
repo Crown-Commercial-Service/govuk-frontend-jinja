@@ -1,0 +1,19 @@
+{% from "tabs/macro.njk" import govukTabs %}
+
+{{ govukTabs({
+    "idPrefix": "custom",
+    "items": [
+        {
+            "label": "Tab 1",
+            "panel": {
+                "text": "Panel 1 content"
+            }
+        },
+        {
+            "label": "Tab 2",
+            "panel": {
+                "text": "Panel 2 content"
+            }
+        }
+    ]
+}) }}

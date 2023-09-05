@@ -1,0 +1,14 @@
+{% from "table/macro.njk" import govukTable %}
+
+{{ govukTable({
+    "rows": [
+        [
+            {
+                "text": "Foo",
+                "attributes": {
+                    "data-fizz": "buzz"
+                }
+            }
+        ]
+    ]
+}) }}

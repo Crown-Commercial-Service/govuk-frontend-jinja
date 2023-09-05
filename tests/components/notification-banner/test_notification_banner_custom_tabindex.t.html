@@ -1,0 +1,9 @@
+{% from "notification-banner/macro.njk" import govukNotificationBanner %}
+
+{{ govukNotificationBanner({
+    "type": "success",
+    "text": "Email sent to example@email.com",
+    "attributes": {
+        "tabindex": 2
+    }
+}) }}

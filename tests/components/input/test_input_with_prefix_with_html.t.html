@@ -1,0 +1,12 @@
+{% from "input/macro.njk" import govukInput %}
+
+{{ govukInput({
+    "label": {
+        "html": "Amount, in pounds"
+    },
+    "id": "input-with-prefix",
+    "name": "amount",
+    "prefix": {
+        "html": "<span>\u00a3</span>"
+    }
+}) }}

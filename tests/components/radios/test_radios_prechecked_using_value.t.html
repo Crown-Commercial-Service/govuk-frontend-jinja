@@ -1,0 +1,16 @@
+{% from "radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+    "name": "example-default",
+    "items": [
+        {
+            "value": "yes",
+            "text": "Yes"
+        },
+        {
+            "value": "no",
+            "text": "No"
+        }
+    ],
+    "value": "no"
+}) }}

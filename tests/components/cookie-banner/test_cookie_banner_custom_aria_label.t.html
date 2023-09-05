@@ -1,0 +1,10 @@
+{% from "cookie-banner/macro.njk" import govukCookieBanner %}
+
+{{ govukCookieBanner({
+    "ariaLabel": "Cookies on GOV.UK",
+    "messages": [
+        {
+            "text": "We use cookies on GOV.UK"
+        }
+    ]
+}) }}

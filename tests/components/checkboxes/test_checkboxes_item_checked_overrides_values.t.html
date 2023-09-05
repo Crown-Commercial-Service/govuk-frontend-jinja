@@ -1,0 +1,24 @@
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+{{ govukCheckboxes({
+    "name": "colors",
+    "items": [
+        {
+            "value": "red",
+            "text": "Red"
+        },
+        {
+            "value": "green",
+            "text": "Green",
+            "checked": false
+        },
+        {
+            "value": "blue",
+            "text": "Blue"
+        }
+    ],
+    "values": [
+        "red",
+        "green"
+    ]
+}) }}

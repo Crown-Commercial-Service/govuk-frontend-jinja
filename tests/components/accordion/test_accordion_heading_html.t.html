@@ -1,0 +1,15 @@
+{% from "accordion/macro.njk" import govukAccordion %}
+
+{{ govukAccordion({
+    "id": "accordion-heading-html",
+    "items": [
+        {
+            "heading": {
+                "html": "<span class=\"myClass\">Section A</span>"
+            },
+            "content": {
+                "text": "Some content"
+            }
+        }
+    ]
+}) }}

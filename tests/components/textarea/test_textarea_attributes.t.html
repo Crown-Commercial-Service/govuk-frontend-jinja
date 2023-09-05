@@ -1,0 +1,12 @@
+{% from "textarea/macro.njk" import govukTextarea %}
+
+{{ govukTextarea({
+    "id": "with-attributes",
+    "name": "with-attributes",
+    "label": {
+        "text": "With attributes"
+    },
+    "attributes": {
+        "data-attribute": "my data value"
+    }
+}) }}

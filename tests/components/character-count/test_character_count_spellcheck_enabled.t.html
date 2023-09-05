@@ -1,0 +1,11 @@
+{% from "character-count/macro.njk" import govukCharacterCount %}
+
+{{ govukCharacterCount({
+    "id": "with-spellcheck",
+    "name": "with-spellcheck",
+    "maxlength": 10,
+    "label": {
+        "text": "With spellcheck"
+    },
+    "spellcheck": true
+}) }}

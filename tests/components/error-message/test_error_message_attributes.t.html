@@ -1,0 +1,9 @@
+{% from "error-message/macro.njk" import govukErrorMessage %}
+
+{{ govukErrorMessage({
+    "text": "This is an error message",
+    "attributes": {
+        "data-test": "attribute",
+        "id": "my-error-message"
+    }
+}) }}

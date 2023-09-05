@@ -1,0 +1,45 @@
+{% from "table/macro.njk" import govukTable %}
+
+{{ govukTable({
+    "rows": [
+        [
+            {
+                "text": "January"
+            },
+            {
+                "text": "\u00a385",
+                "format": "numeric"
+            },
+            {
+                "text": "\u00a395",
+                "format": "numeric"
+            }
+        ],
+        [
+            {
+                "text": "February"
+            },
+            {
+                "text": "\u00a375",
+                "format": "numeric"
+            },
+            {
+                "text": "\u00a355",
+                "format": "numeric"
+            }
+        ],
+        [
+            {
+                "text": "March"
+            },
+            {
+                "text": "\u00a3165",
+                "format": "numeric"
+            },
+            {
+                "text": "\u00a3125",
+                "format": "numeric"
+            }
+        ]
+    ]
+}) }}

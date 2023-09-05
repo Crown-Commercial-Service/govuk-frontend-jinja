@@ -1,0 +1,14 @@
+{% from "cookie-banner/macro.njk" import govukCookieBanner %}
+
+{{ govukCookieBanner({
+    "messages": [
+        {
+            "actions": [
+                {
+                    "text": "Button",
+                    "type": "button"
+                }
+            ]
+        }
+    ]
+}) }}

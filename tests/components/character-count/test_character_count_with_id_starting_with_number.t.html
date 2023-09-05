@@ -1,0 +1,10 @@
+{% from "character-count/macro.njk" import govukCharacterCount %}
+
+{{ govukCharacterCount({
+    "name": "more-detail",
+    "id": "1_more-detail",
+    "maxlength": 10,
+    "label": {
+        "text": "Can you provide more detail?"
+    }
+}) }}

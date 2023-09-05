@@ -1,0 +1,25 @@
+{% from "summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+    "card": {
+        "classes": "custom-class"
+    },
+    "rows": [
+        {
+            "key": {
+                "text": "Name"
+            },
+            "value": {
+                "text": "Firstname Lastname"
+            }
+        },
+        {
+            "key": {
+                "text": "Date of birth"
+            },
+            "value": {
+                "text": "13/08/1980"
+            }
+        }
+    ]
+}) }}

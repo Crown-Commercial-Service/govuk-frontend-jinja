@@ -1,0 +1,16 @@
+{% from "input/macro.njk" import govukInput %}
+
+{{ govukInput({
+    "label": {
+        "text": "Cost per item, in pounds"
+    },
+    "id": "input-with-prefix-suffix",
+    "name": "cost",
+    "classes": "govuk-input--width-5",
+    "prefix": {
+        "text": "\u00a3"
+    },
+    "suffix": {
+        "text": "per item"
+    }
+}) }}

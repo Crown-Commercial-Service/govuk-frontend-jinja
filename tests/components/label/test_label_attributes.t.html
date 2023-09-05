@@ -1,0 +1,9 @@
+{% from "label/macro.njk" import govukLabel %}
+
+{{ govukLabel({
+    "text": "National Insurance number",
+    "attributes": {
+        "first-attribute": "foo",
+        "second-attribute": "bar"
+    }
+}) }}

@@ -1,0 +1,24 @@
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+{{ govukCheckboxes({
+    "name": "example",
+    "errorMessage": {
+        "text": "Please select an option"
+    },
+    "fieldset": {
+        "describedBy": "some-id",
+        "legend": {
+            "text": "What is your nationality?"
+        }
+    },
+    "items": [
+        {
+            "value": "british",
+            "text": "British"
+        },
+        {
+            "value": "irish",
+            "text": "Irish"
+        }
+    ]
+}) }}

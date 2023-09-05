@@ -1,0 +1,10 @@
+{% from "textarea/macro.njk" import govukTextarea %}
+
+{{ govukTextarea({
+    "id": "with-classes",
+    "name": "with-classes",
+    "label": {
+        "text": "With classes"
+    },
+    "classes": "app-textarea--custom-modifier"
+}) }}

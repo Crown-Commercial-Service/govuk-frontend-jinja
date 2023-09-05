@@ -1,0 +1,14 @@
+{% from "pagination/macro.njk" import govukPagination %}
+
+{{ govukPagination({
+    "previous": {
+        "text": "pr\u00e9c\u00e9dente",
+        "href": "/previous",
+        "visuallyHiddenText": "Page pr\u00e9c\u00e9dente"
+    },
+    "next": {
+        "text": "suivante",
+        "href": "/next",
+        "visuallyHiddenText": "Page suivante"
+    }
+}) }}

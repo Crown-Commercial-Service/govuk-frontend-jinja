@@ -13,8 +13,8 @@ fi
 
 nunjucks \
 	--path tests/components \
-	--path node_modules/govuk-frontend \
-	--path node_modules/govuk-frontend/components \
+	--path node_modules/govuk-frontend/govuk \
+	--path node_modules/govuk-frontend/govuk/components \
 	--out tests/components \
 	--original-extension .t.html \
 	--extension x.html \

@@ -1,0 +1,17 @@
+{% from "cookie-banner/macro.njk" import govukCookieBanner %}
+
+{{ govukCookieBanner({
+    "messages": [
+        {
+            "actions": [
+                {
+                    "text": "Link with attributes",
+                    "href": "/link",
+                    "attributes": {
+                        "data-link-attribute": "my-value"
+                    }
+                }
+            ]
+        }
+    ]
+}) }}

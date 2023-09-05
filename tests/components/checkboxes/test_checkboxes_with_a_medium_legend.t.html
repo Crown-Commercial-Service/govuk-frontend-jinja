@@ -1,31 +1,31 @@
 {% from "checkboxes/macro.njk" import govukCheckboxes %}
 
 {{ govukCheckboxes({
-  "name": "waste",
-  "fieldset": {
-    "legend": {
-      "text": "Which types of waste do you transport regularly?",
-      "classes": "govuk-fieldset__legend--m"
-    }
-  },
-  "hint": {
-    "text": "Select all that apply"
-  },
-  "errorMessage": {
-    "text": "Select which types of waste you transport regularly"
-  },
-  "items": [
-    {
-      "value": "animal",
-      "text": "Waste from animal carcasses"
+    "name": "waste",
+    "fieldset": {
+        "legend": {
+            "text": "Which types of waste do you transport regularly?",
+            "classes": "govuk-fieldset__legend--m"
+        }
     },
-    {
-      "value": "mines",
-      "text": "Waste from mines or quarries"
+    "hint": {
+        "text": "Select all that apply"
     },
-    {
-      "value": "farm",
-      "text": "Farm or agricultural waste"
-    }
-  ]
+    "errorMessage": {
+        "text": "Select which types of waste you transport regularly"
+    },
+    "items": [
+        {
+            "value": "animal",
+            "text": "Waste from animal carcasses"
+        },
+        {
+            "value": "mines",
+            "text": "Waste from mines or quarries"
+        },
+        {
+            "value": "farm",
+            "text": "Farm or agricultural waste"
+        }
+    ]
 }) }}

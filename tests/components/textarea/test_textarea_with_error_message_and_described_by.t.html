@@ -1,0 +1,13 @@
+{% from "textarea/macro.njk" import govukTextarea %}
+
+{{ govukTextarea({
+    "name": "textarea-with-error",
+    "label": {
+        "text": "Textarea with error"
+    },
+    "describedBy": "some-id",
+    "id": "textarea-with-error",
+    "errorMessage": {
+        "text": "Error message"
+    }
+}) }}

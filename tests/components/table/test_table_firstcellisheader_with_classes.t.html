@@ -1,0 +1,13 @@
+{% from "table/macro.njk" import govukTable %}
+
+{{ govukTable({
+    "firstCellIsHeader": true,
+    "rows": [
+        [
+            {
+                "text": "Foo",
+                "classes": "my-custom-class"
+            }
+        ]
+    ]
+}) }}

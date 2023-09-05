@@ -1,0 +1,10 @@
+{% from "textarea/macro.njk" import govukTextarea %}
+
+{{ govukTextarea({
+    "id": "with-describedby",
+    "name": "with-describedby",
+    "label": {
+        "text": "With describedBy"
+    },
+    "describedBy": "some-id"
+}) }}

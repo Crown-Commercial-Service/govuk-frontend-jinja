@@ -1,0 +1,12 @@
+{% from "table/macro.njk" import govukTable %}
+
+{{ govukTable({
+    "firstCellIsHeader": true,
+    "rows": [
+        [
+            {
+                "html": "Foo <span>bar</span>"
+            }
+        ]
+    ]
+}) }}

@@ -1,0 +1,8 @@
+{% from "button/macro.njk" import govukButton %}
+
+{{ govukButton({
+    "name": "warning",
+    "text": "Warning button disabled",
+    "classes": "govuk-button--warning",
+    "disabled": true
+}) }}

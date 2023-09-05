@@ -1,0 +1,14 @@
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{{ govukErrorSummary({
+    "titleText": "There is a problem",
+    "errorList": [
+        {
+            "text": "Invalid username or password"
+        },
+        {
+            "text": "Agree to the terms of service to log in",
+            "href": "#example-error-1"
+        }
+    ]
+}) }}

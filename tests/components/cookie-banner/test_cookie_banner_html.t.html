@@ -1,0 +1,9 @@
+{% from "cookie-banner/macro.njk" import govukCookieBanner %}
+
+{{ govukCookieBanner({
+    "messages": [
+        {
+            "html": "<p class=\"govuk-body\">We use cookies in <span>our service</span>.</p>"
+        }
+    ]
+}) }}

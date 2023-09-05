@@ -1,0 +1,19 @@
+{% from "radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+    "name": "example-error-message",
+    "idPrefix": "id-prefix",
+    "errorMessage": {
+        "text": "Please select an option"
+    },
+    "items": [
+        {
+            "value": "yes",
+            "text": "Yes"
+        },
+        {
+            "value": "no",
+            "text": "No"
+        }
+    ]
+}) }}

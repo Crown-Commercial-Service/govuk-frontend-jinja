@@ -1,0 +1,10 @@
+{% from "button/macro.njk" import govukButton %}
+
+{{ govukButton({
+    "element": "input",
+    "text": "Submit",
+    "attributes": {
+        "aria-controls": "example-id",
+        "data-tracking-dimension": 123
+    }
+}) }}

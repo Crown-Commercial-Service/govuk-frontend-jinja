@@ -1,0 +1,19 @@
+{% from "select/macro.njk" import govukSelect %}
+
+{{ govukSelect({
+    "id": "with-falsey-values",
+    "name": "with-falsey-values",
+    "items": [
+        {
+            "text": "Option 1",
+            "value": 1
+        },
+        null,
+        false,
+        "",
+        {
+            "text": "Options 2",
+            "value": 2
+        }
+    ]
+}) }}

@@ -1,0 +1,18 @@
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{{ govukBreadcrumbs({
+    "classes": "govuk-breadcrumbs--inverse",
+    "items": [
+        {
+            "text": "Home",
+            "href": "/"
+        },
+        {
+            "text": "Passports, travel and living abroad",
+            "href": "/browse/abroad"
+        },
+        {
+            "text": "Travel abroad"
+        }
+    ]
+}) }}

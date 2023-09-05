@@ -1,0 +1,12 @@
+{% from "table/macro.njk" import govukTable %}
+
+{{ govukTable({
+    "rows": [
+        [
+            {
+                "text": "Foo",
+                "classes": "my-custom-class"
+            }
+        ]
+    ]
+}) }}

@@ -1,0 +1,9 @@
+{% from "select/macro.njk" import govukSelect %}
+
+{{ govukSelect({
+    "id": "select-with-hint",
+    "name": "select-with-hint",
+    "hint": {
+        "text": "Hint text goes here"
+    }
+}) }}

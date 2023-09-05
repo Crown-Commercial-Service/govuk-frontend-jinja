@@ -1,0 +1,10 @@
+{% from "input/macro.njk" import govukInput %}
+
+{{ govukInput({
+    "id": "with-classes",
+    "name": "with-classes",
+    "label": {
+        "text": "With classes"
+    },
+    "classes": "app-input--custom-modifier"
+}) }}

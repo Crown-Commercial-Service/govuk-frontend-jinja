@@ -1,0 +1,9 @@
+{% from "character-count/macro.njk" import govukCharacterCount %}
+
+{{ govukCharacterCount({
+    "id": "to-configure-in-javascript",
+    "name": "address",
+    "label": {
+        "text": "Full address"
+    }
+}) }}

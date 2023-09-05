@@ -1,0 +1,8 @@
+{% from "fieldset/macro.njk" import govukFieldset %}
+
+{{ govukFieldset({
+    "describedBy": "some-id",
+    "legend": {
+        "text": "Which option?"
+    }
+}) }}

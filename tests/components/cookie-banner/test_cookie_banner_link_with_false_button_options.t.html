@@ -1,0 +1,16 @@
+{% from "cookie-banner/macro.njk" import govukCookieBanner %}
+
+{{ govukCookieBanner({
+    "messages": [
+        {
+            "actions": [
+                {
+                    "text": "This is a link",
+                    "href": "/link",
+                    "value": "cookies",
+                    "name": "link"
+                }
+            ]
+        }
+    ]
+}) }}

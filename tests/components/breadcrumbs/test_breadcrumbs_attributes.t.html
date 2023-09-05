@@ -1,0 +1,13 @@
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{{ govukBreadcrumbs({
+    "attributes": {
+        "id": "my-navigation",
+        "role": "navigation"
+    },
+    "items": [
+        {
+            "text": "Home"
+        }
+    ]
+}) }}

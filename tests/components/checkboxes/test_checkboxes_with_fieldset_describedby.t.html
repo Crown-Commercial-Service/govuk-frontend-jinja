@@ -1,0 +1,24 @@
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+{{ govukCheckboxes({
+    "name": "example-name",
+    "fieldset": {
+        "describedBy": "some-id",
+        "legend": {
+            "text": "Which option?"
+        }
+    },
+    "items": [
+        {
+            "value": 1,
+            "text": "Option 1"
+        },
+        {
+            "value": 2,
+            "text": "Option 2"
+        }
+    ],
+    "hint": {
+        "text": "If you have dual nationality, select all options that are relevant to you."
+    }
+}) }}

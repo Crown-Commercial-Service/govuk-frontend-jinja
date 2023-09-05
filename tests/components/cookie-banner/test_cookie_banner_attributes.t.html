@@ -1,0 +1,11 @@
+{% from "cookie-banner/macro.njk" import govukCookieBanner %}
+
+{{ govukCookieBanner({
+    "messages": [
+        {
+            "attributes": {
+                "data-attribute": "my-value"
+            }
+        }
+    ]
+}) }}

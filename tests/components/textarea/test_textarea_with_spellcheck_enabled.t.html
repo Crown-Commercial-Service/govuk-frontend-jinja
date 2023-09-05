@@ -1,0 +1,10 @@
+{% from "textarea/macro.njk" import govukTextarea %}
+
+{{ govukTextarea({
+    "label": {
+        "text": "Spellcheck is enabled"
+    },
+    "id": "textarea-with-spellcheck-enabled",
+    "name": "spellcheck",
+    "spellcheck": true
+}) }}

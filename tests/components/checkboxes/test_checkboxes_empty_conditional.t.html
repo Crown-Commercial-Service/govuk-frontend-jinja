@@ -1,0 +1,14 @@
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+{{ govukCheckboxes({
+    "name": "example-conditional",
+    "items": [
+        {
+            "value": "foo",
+            "text": "Foo",
+            "conditional": {
+                "html": false
+            }
+        }
+    ]
+}) }}

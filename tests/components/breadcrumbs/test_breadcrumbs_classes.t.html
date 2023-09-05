@@ -1,0 +1,10 @@
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{{ govukBreadcrumbs({
+    "classes": "app-breadcrumbs--custom-modifier",
+    "items": [
+        {
+            "text": "Home"
+        }
+    ]
+}) }}

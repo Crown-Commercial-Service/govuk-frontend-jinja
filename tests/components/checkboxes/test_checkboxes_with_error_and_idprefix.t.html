@@ -1,0 +1,15 @@
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+{{ govukCheckboxes({
+    "name": "name-of-checkboxes",
+    "errorMessage": {
+        "text": "Please select an option"
+    },
+    "idPrefix": "id-prefix",
+    "items": [
+        {
+            "value": "animal",
+            "text": "Waste from animal carcasses"
+        }
+    ]
+}) }}

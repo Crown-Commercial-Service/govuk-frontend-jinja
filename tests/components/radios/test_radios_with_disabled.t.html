@@ -1,26 +1,32 @@
 {% from "radios/macro.njk" import govukRadios %}
 
 {{ govukRadios({
-  "idPrefix": "example-disabled",
-  "name": "example-disabled",
-  "fieldset": {
-    "legend": {
-      "text": "Have you changed your name?"
-    }
-  },
-  "hint": {
-    "text": "This includes changing your last name or spelling your name differently."
-  },
-  "items": [
-    {
-      "value": "yes",
-      "text": "Yes",
-      "disabled": true
+    "idPrefix": "gov",
+    "name": "gov",
+    "fieldset": {
+        "legend": {
+            "text": "How do you want to sign in?",
+            "classes": "govuk-fieldset__legend--l",
+            "isPageHeading": true
+        }
     },
-    {
-      "value": "no",
-      "text": "No",
-      "disabled": true
-    }
-  ]
+    "items": [
+        {
+            "value": "gateway",
+            "text": "Sign in with Government Gateway",
+            "id": "gateway",
+            "hint": {
+                "text": "You\u2019ll have a user ID if you\u2019ve registered for Self Assessment or filed a tax return online before."
+            }
+        },
+        {
+            "value": "verify",
+            "text": "Sign in with GOV.UK Verify",
+            "id": "verify",
+            "hint": {
+                "text": "You\u2019ll have an account if you\u2019ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
+            },
+            "disabled": true
+        }
+    ]
 }) }}

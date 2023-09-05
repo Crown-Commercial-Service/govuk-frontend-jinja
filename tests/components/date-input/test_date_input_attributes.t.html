@@ -1,0 +1,8 @@
+{% from "date-input/macro.njk" import govukDateInput %}
+
+{{ govukDateInput({
+    "id": "with-attributes",
+    "attributes": {
+        "data-attribute": "my data value"
+    }
+}) }}

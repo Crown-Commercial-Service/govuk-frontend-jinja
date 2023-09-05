@@ -1,0 +1,9 @@
+{% from "fieldset/macro.njk" import govukFieldset %}
+
+{{ govukFieldset({
+    "legend": {
+        "text": "What is your address?",
+        "classes": "govuk-fieldset__legend--l",
+        "isPageHeading": true
+    }
+}) }}

@@ -1,0 +1,14 @@
+{% from "summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+    "rows": [
+        {
+            "key": {
+                "text": "Name"
+            },
+            "value": {
+                "html": "<span>email@email.com</span>"
+            }
+        }
+    ]
+}) }}

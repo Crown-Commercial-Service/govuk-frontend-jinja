@@ -1,0 +1,5 @@
+{% from "error-message/macro.njk" import govukErrorMessage %}
+
+{{ govukErrorMessage({
+    "html": "Unexpected <b>bold text</b> in body copy"
+}) }}

@@ -1,0 +1,16 @@
+{% from "table/macro.njk" import govukTable %}
+
+{{ govukTable({
+    "head": [
+        {
+            "html": "Foo <span>bar</span>"
+        }
+    ],
+    "rows": [
+        [
+            {
+                "html": "Foo <span>bar</span>"
+            }
+        ]
+    ]
+}) }}

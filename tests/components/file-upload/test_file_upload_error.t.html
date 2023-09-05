@@ -1,0 +1,12 @@
+{% from "file-upload/macro.njk" import govukFileUpload %}
+
+{{ govukFileUpload({
+    "id": "file-upload-with-error",
+    "name": "file-upload-with-error",
+    "label": {
+        "text": "Upload a file"
+    },
+    "errorMessage": {
+        "text": "Error message"
+    }
+}) }}

@@ -1,0 +1,10 @@
+{% from "fieldset/macro.njk" import govukFieldset %}
+
+{{ govukFieldset({
+    "attributes": {
+        "data-attribute": "value"
+    },
+    "legend": {
+        "text": "Which option?"
+    }
+}) }}

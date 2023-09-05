@@ -1,0 +1,15 @@
+{% from "summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+    "rows": [
+        {
+            "key": {
+                "text": "Name"
+            },
+            "value": {
+                "text": "Firstname Lastname"
+            },
+            "classes": "app-custom-class"
+        }
+    ]
+}) }}

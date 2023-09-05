@@ -1,0 +1,22 @@
+{% from "select/macro.njk" import govukSelect %}
+
+{{ govukSelect({
+    "name": "colors",
+    "id": "colors",
+    "items": [
+        {
+            "value": "red",
+            "text": "Red"
+        },
+        {
+            "value": "green",
+            "text": "Green",
+            "selected": false
+        },
+        {
+            "value": "blue",
+            "text": "Blue"
+        }
+    ],
+    "value": "green"
+}) }}

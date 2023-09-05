@@ -1,0 +1,10 @@
+{% from "character-count/macro.njk" import govukCharacterCount %}
+
+{{ govukCharacterCount({
+    "id": "user1.profile[address]",
+    "name": "address",
+    "maxlength": 10,
+    "label": {
+        "text": "Full address"
+    }
+}) }}

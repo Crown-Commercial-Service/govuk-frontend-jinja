@@ -1,0 +1,14 @@
+{% from "cookie-banner/macro.njk" import govukCookieBanner %}
+
+{{ govukCookieBanner({
+    "messages": [
+        {
+            "actions": [
+                {
+                    "text": "Button with custom classes",
+                    "classes": "my-button-class app-button-class"
+                }
+            ]
+        }
+    ]
+}) }}

@@ -1,0 +1,15 @@
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+{{ govukCheckboxes({
+    "describedBy": "some-id",
+    "name": "t-and-c",
+    "errorMessage": {
+        "text": "Please accept the terms and conditions"
+    },
+    "items": [
+        {
+            "value": "yes",
+            "text": "I agree to the terms and conditions"
+        }
+    ]
+}) }}

@@ -1,0 +1,9 @@
+{% from "button/macro.njk" import govukButton %}
+
+{{ govukButton({
+    "name": "Inverse",
+    "text": "Inverse start button",
+    "href": "/",
+    "classes": "govuk-button--inverse",
+    "isStartButton": true
+}) }}

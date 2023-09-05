@@ -1,0 +1,16 @@
+{% from "accordion/macro.njk" import govukAccordion %}
+
+{{ govukAccordion({
+    "id": "accordion-remember-expanded-off",
+    "rememberExpanded": false,
+    "items": [
+        {
+            "heading": {
+                "text": "Section A"
+            },
+            "content": {
+                "text": "Some content"
+            }
+        }
+    ]
+}) }}

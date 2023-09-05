@@ -1,0 +1,15 @@
+{% from "textarea/macro.njk" import govukTextarea %}
+
+{{ govukTextarea({
+    "id": "with-hint-error",
+    "name": "with-hint-error",
+    "label": {
+        "text": "With hint and error"
+    },
+    "errorMessage": {
+        "text": "Error message"
+    },
+    "hint": {
+        "text": "Hint"
+    }
+}) }}

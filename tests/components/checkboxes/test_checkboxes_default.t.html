@@ -1,0 +1,19 @@
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+{{ govukCheckboxes({
+    "name": "nationality",
+    "items": [
+        {
+            "value": "british",
+            "text": "British"
+        },
+        {
+            "value": "irish",
+            "text": "Irish"
+        },
+        {
+            "value": "other",
+            "text": "Citizen of another country"
+        }
+    ]
+}) }}

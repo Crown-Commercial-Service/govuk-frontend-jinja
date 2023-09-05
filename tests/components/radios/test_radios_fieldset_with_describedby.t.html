@@ -1,0 +1,21 @@
+{% from "radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+    "name": "example-name",
+    "fieldset": {
+        "describedBy": "some-id",
+        "legend": {
+            "text": "Which option?"
+        }
+    },
+    "items": [
+        {
+            "value": "yes",
+            "text": "Yes"
+        },
+        {
+            "value": "no",
+            "text": "No"
+        }
+    ]
+}) }}

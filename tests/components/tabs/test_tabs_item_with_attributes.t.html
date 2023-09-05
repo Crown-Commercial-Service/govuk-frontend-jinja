@@ -1,0 +1,17 @@
+{% from "tabs/macro.njk" import govukTabs %}
+
+{{ govukTabs({
+    "items": [
+        {
+            "id": "tab-1",
+            "label": "Tab 1",
+            "panel": {
+                "text": "Information about tabs"
+            },
+            "attributes": {
+                "data-attribute": "my-attribute",
+                "data-attribute-2": "my-attribute-2"
+            }
+        }
+    ]
+}) }}

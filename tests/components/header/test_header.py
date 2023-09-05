@@ -1,4 +1,4 @@
-def test_header(env, similar, template, expected):
+def test_header_default(env, similar, template, expected):
     template = env.from_string(template)
     assert similar(template.render(), expected)
 
@@ -8,24 +8,98 @@ def test_header_with_service_name(env, similar, template, expected):
     assert similar(template.render(), expected)
 
 
+def test_header_with_service_name_but_no_service_url(env, similar, template, expected):
+    template = env.from_string(template)
+    assert similar(template.render(), expected)
+
+
+def test_header_with_navigation(env, similar, template, expected):
+    template = env.from_string(template)
+    assert similar(template.render(), expected)
+
+
+def test_header_with_custom_navigation_label(env, similar, template, expected):
+    template = env.from_string(template)
+    assert similar(template.render(), expected)
+
+
+def test_header_with_custom_menu_button_text(env, similar, template, expected):
+    template = env.from_string(template)
+    assert similar(template.render(), expected)
+
+
+def test_header_with_custom_menu_button_label(env, similar, template, expected):
+    template = env.from_string(template)
+    assert similar(template.render(), expected)
+
+
 def test_header_with_service_name_and_navigation(env, similar, template, expected):
     template = env.from_string(template)
     assert similar(template.render(), expected)
 
 
-def test_header_with_service_name_and_navigation_and_autoescape(
-    env, loader, file_factory, similar
-):
-    from govuk_frontend_jinja.templates import Environment
-
-    env = Environment(autoescape=True, loader=loader)
-
-    template = file_factory(
-        "test_header_with_service_name_and_navigation", "t"
-    ).read_text()
-    expected = file_factory(
-        "test_header_with_service_name_and_navigation", "x"
-    ).read_text()
-
+def test_header_with_large_navigation(env, similar, template, expected):
     template = env.from_string(template)
     assert similar(template.render(), expected)
+
+
+def test_header_with_product_name(env, similar, template, expected):
+    template = env.from_string(template)
+    assert similar(template.render(), expected)
+
+
+def test_header_full_width(env, similar, template, expected):
+    template = env.from_string(template)
+    assert similar(template.render(), expected)
+
+
+def test_header_full_width_with_navigation(env, similar, template, expected):
+    template = env.from_string(template)
+    assert similar(template.render(), expected)
+
+
+def test_header_navigation_item_with_html(env, similar, template, expected):
+    template = env.from_string(template)
+    assert similar(template.render(), expected)
+
+
+def test_header_navigation_item_with_text_without_link(env, similar, template, expected):
+    template = env.from_string(template)
+    assert similar(template.render(), expected)
+
+
+def test_header_attributes(env, similar, template, expected):
+    template = env.from_string(template)
+    assert similar(template.render(), expected)
+
+
+def test_header_classes(env, similar, template, expected):
+    template = env.from_string(template)
+    assert similar(template.render(), expected)
+
+
+def test_header_custom_homepage_url(env, similar, template, expected):
+    template = env.from_string(template)
+    assert similar(template.render(), expected)
+
+
+def test_header_navigation_item_with_attributes(env, similar, template, expected):
+    template = env.from_string(template)
+    assert similar(template.render(), expected)
+
+
+def test_header_navigation_item_with_html_as_text(env, similar, template, expected):
+    template = env.from_string(template)
+    assert similar(template.render(), expected)
+
+
+def test_header_navigation_item_with_html_without_link(env, similar, template, expected):
+    template = env.from_string(template)
+    assert similar(template.render(), expected)
+
+
+def test_header_with_custom_navigation_label_and_custom_menu_button_text(env, similar, template, expected):
+    template = env.from_string(template)
+    assert similar(template.render(), expected)
+
+

@@ -1,28 +1,28 @@
 {% from "radios/macro.njk" import govukRadios %}
 
 {{ govukRadios({
-  "idPrefix": "example-divider",
-  "name": "example",
-  "fieldset": {
-    "legend": {
-      "text": "How do you want to sign in?"
-    }
-  },
-  "items": [
-    {
-      "value": "governement-gateway",
-      "text": "Use Government Gateway"
+    "idPrefix": "example-divider",
+    "name": "example",
+    "fieldset": {
+        "legend": {
+            "text": "How do you want to sign in?"
+        }
     },
-    {
-      "value": "govuk-verify",
-      "text": "Use GOV.UK Verify"
-    },
-    {
-      "divider": "or"
-    },
-    {
-      "value": "create-account",
-      "text": "Create an account"
-    }
-  ]
+    "items": [
+        {
+            "value": "governement-gateway",
+            "text": "Use Government Gateway"
+        },
+        {
+            "value": "govuk-verify",
+            "text": "Use GOV.UK Verify"
+        },
+        {
+            "divider": "or"
+        },
+        {
+            "value": "create-account",
+            "text": "Create an account"
+        }
+    ]
 }) }}

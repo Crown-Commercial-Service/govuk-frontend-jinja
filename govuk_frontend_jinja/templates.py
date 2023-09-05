@@ -144,7 +144,6 @@ class NunjucksExtension(jinja2.ext.Extension):
 
     def filter_njk_stream(self, stream):
         for token in stream:
-
             # patch strict equality operator `===`
             if token.test("eq:==") and stream.current.test("assign:="):
                 yield Token(token.lineno, "name", "is")
@@ -155,6 +154,7 @@ class NunjucksExtension(jinja2.ext.Extension):
                 yield Token(token.lineno, "name", "is")
                 yield Token(token.lineno, "name", "not")
                 yield Token(token.lineno, "name", "sameas")
+                stream.skip(1)
             else:
                 yield token
 

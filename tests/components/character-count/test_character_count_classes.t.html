@@ -1,0 +1,11 @@
+{% from "character-count/macro.njk" import govukCharacterCount %}
+
+{{ govukCharacterCount({
+    "id": "with-classes",
+    "name": "with-classes",
+    "maxlength": 10,
+    "label": {
+        "text": "With classes"
+    },
+    "classes": "app-character-count--custom-modifier"
+}) }}

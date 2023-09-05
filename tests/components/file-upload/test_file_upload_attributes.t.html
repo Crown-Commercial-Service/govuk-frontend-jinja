@@ -1,0 +1,12 @@
+{% from "file-upload/macro.njk" import govukFileUpload %}
+
+{{ govukFileUpload({
+    "id": "file-upload-attributes",
+    "name": "file-upload-attributes",
+    "label": {
+        "text": "Upload a file"
+    },
+    "attributes": {
+        "accept": ".jpg, .jpeg, .png"
+    }
+}) }}

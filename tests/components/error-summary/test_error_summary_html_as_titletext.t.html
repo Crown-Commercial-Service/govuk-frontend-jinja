@@ -1,0 +1,10 @@
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{{ govukErrorSummary({
+    "titleText": "Alert, <em>alert</em>",
+    "errorList": [
+        {
+            "text": "Invalid username or password"
+        }
+    ]
+}) }}

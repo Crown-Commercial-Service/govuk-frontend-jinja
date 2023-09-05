@@ -1,0 +1,16 @@
+{% from "input/macro.njk" import govukInput %}
+
+{{ govukInput({
+    "id": "with-error-hint-describedby",
+    "name": "with-error-hint-describedby",
+    "label": {
+        "text": "With error, hint and describedBy"
+    },
+    "errorMessage": {
+        "text": "Error message"
+    },
+    "hint": {
+        "text": "Hint"
+    },
+    "describedBy": "some-id"
+}) }}

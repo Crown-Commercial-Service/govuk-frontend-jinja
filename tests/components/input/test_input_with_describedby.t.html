@@ -1,0 +1,10 @@
+{% from "input/macro.njk" import govukInput %}
+
+{{ govukInput({
+    "id": "with-describedby",
+    "name": "with-describedby",
+    "label": {
+        "text": "With describedBy"
+    },
+    "describedBy": "some-id"
+}) }}

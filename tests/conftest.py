@@ -14,7 +14,7 @@ import govuk_frontend_jinja
 
 @pytest.helpers.register
 def govuk_frontend_path():
-    return Path(__file__).resolve().parents[1] / "node_modules" / "govuk-frontend"
+    return Path(__file__).resolve().parents[1] / "node_modules" / "govuk-frontend" / "govuk"
 
 
 @pytest.helpers.register

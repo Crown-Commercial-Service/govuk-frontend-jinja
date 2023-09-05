@@ -1,0 +1,12 @@
+{% from "date-input/macro.njk" import govukDateInput %}
+
+{{ govukDateInput({
+    "id": "with-custom-inputmode",
+    "items": [
+        {
+            "name": "day",
+            "pattern": "[0-9X]*",
+            "inputmode": "text"
+        }
+    ]
+}) }}

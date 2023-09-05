@@ -1,0 +1,11 @@
+{% from "input/macro.njk" import govukInput %}
+
+{{ govukInput({
+    "label": {
+        "text": "National Insurance number",
+        "classes": "govuk-label--l",
+        "isPageHeading": true
+    },
+    "id": "input-with-page-heading",
+    "name": "test-name"
+}) }}

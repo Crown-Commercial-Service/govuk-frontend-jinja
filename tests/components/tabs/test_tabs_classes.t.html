@@ -1,0 +1,14 @@
+{% from "tabs/macro.njk" import govukTabs %}
+
+{{ govukTabs({
+    "classes": "app-tabs--custom-modifier",
+    "items": [
+        {
+            "label": "Tab 1",
+            "id": "tab-1",
+            "panel": {
+                "text": "Information about tabs"
+            }
+        }
+    ]
+}) }}

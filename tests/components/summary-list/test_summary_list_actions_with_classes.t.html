@@ -1,0 +1,23 @@
+{% from "summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+    "rows": [
+        {
+            "key": {
+                "text": "Name"
+            },
+            "value": {
+                "text": "Firstname Lastname"
+            },
+            "actions": {
+                "classes": "app-custom-class",
+                "items": [
+                    {
+                        "text": "Edit",
+                        "href": "/edit"
+                    }
+                ]
+            }
+        }
+    ]
+}) }}

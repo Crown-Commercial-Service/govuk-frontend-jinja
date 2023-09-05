@@ -1,0 +1,12 @@
+{% from "textarea/macro.njk" import govukTextarea %}
+
+{{ govukTextarea({
+    "name": "no-ni-reason",
+    "id": "no-ni-reason",
+    "label": {
+        "text": "Why can\u2019t you provide a National Insurance number?"
+    },
+    "errorMessage": {
+        "text": "You must provide an explanation"
+    }
+}) }}

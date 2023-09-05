@@ -1,0 +1,14 @@
+{% from "radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+    "name": "example-label-classes",
+    "items": [
+        {
+            "value": "yes",
+            "text": "Yes",
+            "label": {
+                "classes": "bold"
+            }
+        }
+    ]
+}) }}

@@ -1,0 +1,7 @@
+{% from "button/macro.njk" import govukButton %}
+
+{{ govukButton({
+    "text": "Disabled link button",
+    "href": "/",
+    "disabled": true
+}) }}
