@@ -101,3 +101,27 @@ class TestStrictEquality:
         assert template.render(var=True) == "true if true"
         assert template.render(var=False) == ""
         assert template.render(var=1) == ""
+
+
+class TestStrictInequality():
+    def test_jinja_raises_syntax_error_for_strict_equality_operator(self, env):
+        with pytest.raises(
+            jinja2.exceptions.TemplateSyntaxError, match="unexpected '='"
+        ):
+            env.from_string("{% if 1 !== 1 %}always false{% endif %}")
+
+    def test_njk_has_strict_equality_operator(self, env):
+        template = njk_template_from_string(
+            env, "{% if 1 !== '1' %}always true{% endif %}"
+        )
+
+        assert template.render() == "always true"
+
+    def test_strict_equality_operator(self, env):
+        template = njk_template_from_string(
+            env, "{% if var !== true %}true if false{% endif %}"
+        )
+
+        assert template.render(var=True) == ""
+        assert template.render(var=False) == "true if false"
+        assert template.render(var=1) == "true if false"

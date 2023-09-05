@@ -2,9 +2,9 @@
 #
 # Download the govuk-frontend package with component templates for testing.
 
-VERSION="2.13.0"
+VERSION="4.7.0"
 URL="https://github.com/alphagov/govuk-frontend/archive/v${VERSION}.tar.gz"
-SHA256="785683afedaae367ab106d9469080fadc518e670e6ab13cf9e4e17c641981a92"
+SHA256="7fbe9fee6e78df281b2c0b9eb8542105a23a4f88c0d60411b15340a977755692"
 
 set -e
 
@@ -17,7 +17,7 @@ tarball="govuk-frontend-${VERSION}.tar.gz"
 echo "$SHA256 $tarball" | sha256sum --check --quiet
 
 # extract
-mkdir -p node_modules/govuk-frontend
-tar -xf $tarball -C node_modules/govuk-frontend --strip-components=2 "govuk-frontend-${VERSION}/package/"
+mkdir -p node_modules/govuk-frontend/govuk
+tar -xf $tarball -C node_modules/govuk-frontend/govuk --strip-components=3 "govuk-frontend-${VERSION}/package/govuk"
 
 echo "Installed govuk-frontend v${VERSION} to node_modules"

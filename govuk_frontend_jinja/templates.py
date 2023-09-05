@@ -150,6 +150,11 @@ class NunjucksExtension(jinja2.ext.Extension):
                 yield Token(token.lineno, "name", "is")
                 yield Token(token.lineno, "name", "sameas")
                 stream.skip(1)
+            # patch strict inequality operator `!==`
+            elif token.test("ne:!=") and stream.current.test("assign:="):
+                yield Token(token.lineno, "name", "is")
+                yield Token(token.lineno, "name", "not")
+                yield Token(token.lineno, "name", "sameas")
             else:
                 yield token
 
