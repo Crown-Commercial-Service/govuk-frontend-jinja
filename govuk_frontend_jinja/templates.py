@@ -18,6 +18,12 @@ def njk_to_j2(template):
     # over the dict item. Handle specially.
     template = re.sub(r"\.items\b", ".items__njk", template)
 
+    # Some component templates (such as checkboxes) use `values` as the key of
+    # an object element. However `values` is also the name of a dictionary
+    # method in Python, and Jinja2 will prefer to return this attribute
+    # over the dict item. Handle specially.
+    template = re.sub(r"\.values\b", ".values__njk", template)
+
     # Some component templates (such as radios) append the loop index to a
     # string. As the loop index is an integer this causes a TypeError in
     # Python. Jinja2 has an operator `~` for string concatenation that
@@ -144,11 +150,14 @@ class NunjucksExtension(jinja2.ext.Extension):
 
     def filter_njk_stream(self, stream):
         for token in stream:
-
             # patch strict equality operator `===`
             if token.test("eq:==") and stream.current.test("assign:="):
                 yield Token(token.lineno, "name", "is")
                 yield Token(token.lineno, "name", "sameas")
+                stream.skip(1)
+            # patch strict inequality operator `!==`
+            elif token.test("ne:!=") and stream.current.test("assign:="):
+                yield token
                 stream.skip(1)
             else:
                 yield token
