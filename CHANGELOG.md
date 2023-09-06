@@ -1,3 +1,9 @@
+## 2023-09-06 version 0.6.0-alpha
+
+### Features
+
+* Make compatible with GOV.UK Frontend v4 ([#69](https://github.com/Crown-Commercial-Service/govuk-frontend-jinja/pull/69))
+
 ## 2020-12-22 version 0.5.8-alpha
 
 ### Bugfixes
