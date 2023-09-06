@@ -45,6 +45,7 @@ def test_cookie_banner_classes(env, similar, template, expected):
 
 def test_cookie_banner_attributes(env, similar, template, expected):
     template = env.from_string(template)
+    print(template.render())
     assert similar(template.render(), expected)
 
 

@@ -112,16 +112,16 @@ class TestStrictInequality():
 
     def test_njk_has_strict_inequality_operator(self, env):
         template = njk_template_from_string(
-            env, "{% if 1 !== '1' %}always true{% endif %}"
+            env, "{% if 1 !== 2 %}always true{% endif %}"
         )
 
         assert template.render() == "always true"
 
     def test_strict_inequality_operator(self, env):
         template = njk_template_from_string(
-            env, "{% if var !== true %}true if false{% endif %}"
+            env, "{% if var !== undefined %}true if not undefined{% endif %}"
         )
 
-        assert template.render(var=True) == ""
-        assert template.render(var=False) == "true if false"
-        assert template.render(var=1) == "true if false"
+        assert template.render() == ""
+        assert template.render(var=False) == "true if not undefined"
+        assert template.render(var=1) == "true if not undefined"

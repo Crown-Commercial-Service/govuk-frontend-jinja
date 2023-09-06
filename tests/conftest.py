@@ -24,7 +24,7 @@ def govuk_frontend_version_info() -> Tuple[int, int, int]:
     Useful for skipping depending on whether a component
     is available or not.
     """
-    with open(pytest.helpers.govuk_frontend_path() / "package.json") as package:
+    with open(pytest.helpers.govuk_frontend_path() / ".." / "package.json") as package:
         return tuple(int(v) for v in json.load(package)["version"].split("."))
 
 
@@ -36,7 +36,11 @@ def govuk_frontend():
 @pytest.fixture
 def loader(govuk_frontend):
     return jinja2.FileSystemLoader(
-        [govuk_frontend, govuk_frontend / "components"]
+        [
+            govuk_frontend,
+            govuk_frontend / "components",
+            govuk_frontend / "macros"
+        ]
     )
 
 
