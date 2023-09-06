@@ -7,12 +7,12 @@ This Python package includes classes and modules to make it easier to use the
 
 > **NOTE**: This repository is maintained by GDS developers, but **not** the
 > GOV.UK Design System team. If you have questions or need support raise an
-> issue against this repo [here](https://github.com/alphagov/govuk-frontend-jinja/issues).
+> issue against this repo [here](https://github.com/Crown-Commercial-Service//govuk-frontend-jinja/issues).
 
 ## Installing
 
 ```shell
-pip install git+https://github.com/alphagov/govuk-frontend-jinja.git
+pip install git+https://github.com/Crown-Commercial-Service//govuk-frontend-jinja.git
 ```
 
 ## Using with Flask
