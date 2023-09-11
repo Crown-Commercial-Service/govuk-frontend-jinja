@@ -9,7 +9,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires=[
         "jinja2<3.0",
-        "markupsafe<2.0"
+        "markupsafe<3.0"
     ],
     extras_require={
         "Flask": ["Flask>=1.0,<2.1"],
