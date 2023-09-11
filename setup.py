@@ -8,7 +8,7 @@ setuptools.setup(
     description="Tools to use the GOV.UK Design System with Jinja-powered Python apps",
     packages=setuptools.find_packages(),
     install_requires=[
-        "jinja2<3.0",
+        "jinja2<4.0",
         "markupsafe<2.0"
     ],
     extras_require={
