@@ -12,7 +12,7 @@ setuptools.setup(
         "markupsafe<2.0"
     ],
     extras_require={
-        "Flask": ["Flask>=1.0,<2.1"],
+        "Flask": ["Flask>=1.0,<3.1"],
         "dev": [
             "pytest",
             "pytest-flakes",
