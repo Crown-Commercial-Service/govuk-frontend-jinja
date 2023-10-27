@@ -8,7 +8,7 @@ from govuk_frontend_jinja.templates import NunjucksExtension
 
 @pytest.fixture(autouse=True)
 def njk_to_j2():
-    with mock.patch("govuk_frontend_jinja.templates.njk_to_j2") as m:
+    with mock.patch("govuk_frontend_jinja.templates.njk_to_j2", mock.MagicMock(return_value="foobar")) as m:
         yield m
 
 
